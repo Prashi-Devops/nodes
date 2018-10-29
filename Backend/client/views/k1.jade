@@ -1,0 +1,23 @@
+html
+	head
+		title employee
+		script(type='text/javascript' src="https://code.jquery.com/jquery-3.3.1.min.js")
+		script(src="/javascripts/jade1.js")
+			
+
+	body
+		form(action='/k1',method="POST")
+			div
+				label(for="name") Num:
+				input(type="text" name="no" value="" placeholder="no")
+			br
+			div
+				label(for="name") Name:
+				input(type="text" name="name" value="" placeholder="name")
+			br
+			div
+				label(for="id") Description:
+				input(type="text" rows="4" cols="50" name="des" value="")
+			br
+			button(type="submit") Submit
+			//alert('successfully submitted')

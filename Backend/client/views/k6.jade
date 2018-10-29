@@ -1,0 +1,13 @@
+html
+    head
+        title name
+        script(type='text/javascript' src="https://code.jquery.com/jquery-3.3.1.min.js")
+        script(src="/javascripts/deleted.js")
+    body
+        form(action='/api/delete' method="POST")
+          |Name:
+          input(type="text" name="name" value=user.name) 
+          br
+          button(type='submit' ) Delete
+          
+           

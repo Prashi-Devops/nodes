@@ -1,0 +1,21 @@
+html
+   head
+      title Person
+   body
+      if(type == "error")
+         h3(style = "color:red") #{message}
+
+      else
+            h3 New person, 
+            no: person.no
+            name: #{JSON.stringify(person.name)} ,
+            des: #{JSON.stringify(person.des)} added! 
+            br
+            button(type='button' onclick='edit("'+person.name+'")') Employee 
+                      script.
+                        function edit(a){
+                        window.location.href="http://127.0.0.1:8000/api/display"
+                        }
+
+
+

@@ -1,0 +1,18 @@
+html
+    head
+        title name
+        script(type='text/javascript' src="https://code.jquery.com/jquery-3.3.1.min.js")
+        script(src="/javascripts/update.js")
+    body
+        form(action='/api/display1' method="POST")
+          |Sl.no:
+          input(type="text" name="no" value=user.no)
+          |Name:
+          input(type="text" name="name" value=user.name) 
+          br
+          |Des:
+          input(type="text" name="des" value=user.des) 
+          br
+          button(type='submit' ) Update
+          
+           

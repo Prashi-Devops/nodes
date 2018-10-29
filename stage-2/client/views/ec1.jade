@@ -1,0 +1,18 @@
+html
+    head
+        title name
+    body
+         table.table.table(border=5)
+            thead
+                tr: th ENAME
+                    th EID 
+                    th EAGE
+                    th ELOC
+            tbody
+                each personSchema in user
+                  tr  
+                      td=personSchema.name 
+                      td=personSchema.id 
+                      td=personSchema.age 
+                      td=personSchema.loc
+           

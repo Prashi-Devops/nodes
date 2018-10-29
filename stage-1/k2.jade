@@ -1,0 +1,20 @@
+html
+   head
+      title Person
+   body
+      if(type == "error")
+         h3(style = "color:red") #{message}
+
+      else
+            h3 New person, 
+            ename: #{JSON.stringify(person.name)} ,
+            eid: #{person.id} ,
+            eage: #{person.age}  and
+            eloc: #{JSON.stringify(person.loc)} added! 
+            br
+            a(href="http://127.0.0.1:8000/display")  all employess 
+            br
+            a(href="http://127.0.0.1:8000/surya") Suryawave 
+            br
+            a(href="http://127.0.0.1:8000/ec1") Ec1 
+

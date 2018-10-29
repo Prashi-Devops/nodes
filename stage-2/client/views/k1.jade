@@ -1,0 +1,34 @@
+html
+	head
+		title employee
+		script(type='text/javascript' src="https://code.jquery.com/jquery-3.3.1.min.js")
+		script.
+			include jade1.js
+
+	body
+		form(action='/k1',method="POST")
+			div
+				label(for="name") Ename:
+				input(type="text" name="name" value="" placeholder="emp name")
+			br
+			div
+				label(for="id") Eid:
+				input(type="text" name="id" value="" placeholder="eid")
+			br
+			div
+				label(for="age") Eage:
+				input(type="text" name="age" value="" placeholder="age")
+			br
+			div
+				label(for="name") Eloc:
+				select(name='loc')
+					option(value='', selected='selected') Select 
+					option(value='ec1') Ec1
+					option(value='suryawave') Suryawave
+					option(value='mcbp') MCBP
+					option(value='kalyani') Kalyani
+					option(value='sarjapur') Sarjapur
+			br
+			button(type="submit") Submit
+			//alert('successfully submitted')
+

@@ -1,0 +1,31 @@
+html
+    head
+        title name
+    body
+         table.table.table(border=5)
+            thead
+                tr: th Sl.no
+                    th TempName
+                    th Description
+                    th Edit
+                    th Delete
+                    
+            tbody
+                each personSchema in user
+                  tr  
+                      td=personSchema.no
+                      td=personSchema.name 
+                      td=personSchema.des
+                      td=div
+                       button(type='button' onclick='edit("'+personSchema.name+'")') edit  
+                      script.
+                        function edit(a){
+                        window.location.href="http://localhost:8000/api/display_page/"+a+""
+                        }
+                      td=div
+                       button(type='button' onclick='ed("'+personSchema.name+'")') delete 
+                      script.
+                        function ed(a){
+                        window.location.href="http://localhost:8000/api/delete1/"+a+""
+                        }
+                        
