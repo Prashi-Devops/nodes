@@ -68,7 +68,11 @@ Positive and Negative testing done
   ```
 ## Positive testing
 
-* Now looks like everything is good,so we can start with the positive testcase.We can test through the s3 bucket,make sure you have created bucket manually or throught cli and add the snippet  inside the `release-package.sh` as shown below:
+* We should the following snippet into the `release-utility-package.sh`. 
+  		
+	`zip -j ${RELEASE_FILE} track/release/pdxc/integration-deploy-utilities/CHANGELOG.md `
+	
+* We can test through the s3 bucket,make sure you have created bucket manually or throught cli and add the snippet  inside the `release-package.sh` as shown below:
     
       if [ $RELEASE_FILE = "integration-deploy-utilities.zip" ]
       then
@@ -76,6 +80,7 @@ Positive and Negative testing done
       `aws s3 cp $RELEASE_FILE s3://bucket-name`
       exit 0
       fi
+
 * So that once you raise the pull-reuqest against `master-branch` .You can view the result is stored in the s3 bucket.     
 
 ## Negative testing
