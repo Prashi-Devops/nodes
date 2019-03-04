@@ -1,8 +1,8 @@
 ## Table of Contents
-* API Utilities (#api)
-* Introduce CHANGELOG.md to integration-deploy-utilities (#introduce)
-* Changes made in realease-utility-package.sh (#changes)
-* How to test the process (#process)
+* [API Utilities](#api)
+* [Introduce CHANGELOG.md to integration-deploy-utilities] (#introduce)
+* [Changes made in realease-utility-package.sh] (#changes)
+* [How to test the process] (#process)
 
 ## <a href="#api" id="api"></a> API Utilities
 
