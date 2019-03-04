@@ -10,7 +10,9 @@ We are introducing a [CHANGELOG.md](https://github.dxc.com/Platform-DXC/release-
 
 * The component must provide at the root level of the component zip package a file named `/CHANGELOG.md`.
 * Ensure to include the most recent version of the integration-deploy-utilities into the `/CHANGELOG.md`.
+
 [Top](#top)
+
 # Changes made in realease-utility-package.sh
 
 The Integration Deploy Utilities package is a common package used for deploying all APIs. This release package is not always required to be rebuilt - the deployment coordinator should be aware of changes which would require these steps to be performed.
@@ -20,7 +22,9 @@ The Integration Deploy Utilities package is a common package used for deploying 
   `zip -j ${RELEASE_FILE} track/release/pdxc/integration-deploy-utilities/changelog.md`.
   
 * We have used the -j option for the zip command to have the directory ignored and allowing the changelog.md file to be put into the root directory of the zip file i.e, under `integration-deploy-utilities`.
+
 [Top](#top)
+
 # How to test the process
 Changes are made for testing as show below:
 
@@ -66,6 +70,7 @@ Changes are made for testing as show below:
   ```
   
 [Top](#top)  
+
 ## Positive testing
 
 * Once the changes made in `release-utility-package`.
@@ -82,7 +87,10 @@ Changes are made for testing as show below:
 * So that once you raise the pull-reuqest against `master-branch` .You can view the result is stored in the s3 bucket.     
 
 [Top](#top)
+
 ## Negative testing
+
+### Test case-1
 
 * If changelog does not have current release, then the pipeline should fail 
 * By removing the latest version from the CHANGELOG.md file under `integration-deploy-utilities` folder:
@@ -92,7 +100,9 @@ Changes are made for testing as show below:
  		[2019-03-02T00:22:21.446Z] Error: Release version '1.0.25' not found in Change Log.
  		[2019-03-02T00:22:21.446Z] Release verification exited with Errors.
 
+[Top](#top)
 
+### Test case-2
 * If no changelog in the track/release file, the pipeline should fail.
 * Make changes in the integrationDeployUtilities.json as show below:
 ```json
@@ -116,6 +126,7 @@ Changes are made for testing as show below:
 
 [Top](#top)
 
+### Test case-3
 * If the directory in the track/release file is wrong, the pipeline should fail
 * Make changes in the integrationDeployUtilities.json as show below:
 ```json
