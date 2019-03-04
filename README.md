@@ -88,7 +88,7 @@ Changes should be made for testing as show below:
 
 * Once the changes made in [`release-utility-package`](#changes).
 	
-* We can test through the s3 bucket,make sure you have created bucket manually or throught cli and add the snippet  inside the `release-package.sh` as shown below:
+* We can test through the s3 bucket,make sure you have created bucket manually  and add the snippet  inside the `release-package.sh` as shown below:
     
       if [ $RELEASE_FILE = "integration-deploy-utilities.zip" ]
       then
@@ -96,8 +96,16 @@ Changes should be made for testing as show below:
       `aws s3 cp $RELEASE_FILE s3://bucket-name`
       exit 0
       fi
-
-* So that once you raise the pull-reuqest against `master-branch` .You can view the result is stored in the s3 bucket.     
+* We are trying to copy the content in `$RELEASE_FILE` i.e, `integrationDeployUtilities.zip` in aws s3 bucket as shown below:
+	`aws s3 cp $RELEASE_FILE s3://bucket-name`
+* So that once you raise the pull-request against `master-branch` .The result integrationDeployUtilities.zip is stored in the s3 bucket. * The process of copying can be seen through the jenkins server as shown below:
+		
+		[2019-03-02T00:15:55.540Z] + aws s3 cp integration-deploy-utilities.zip s3://inf-test-buck
+		[2019-03-02T00:16:00.079Z] Completed 256.0 KiB/563.5 KiB (514.6 KiB/s) with 1 file(s) remaining
+			Completed 512.0 KiB/563.5 KiB (973.3 KiB/s) with 1 file(s) remaining
+			Completed 563.5 KiB/563.5 KiB (940.4 KiB/s) with 1 file(s) remaining
+			upload: ./integration-deploy-utilities.zip to s3://inf-test-buck/integration-deploy-utilities.zip
+		[2019-03-02T00:16:00.079Z] + exit 0
 
 [Top](#top)
 
