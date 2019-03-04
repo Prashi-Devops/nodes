@@ -65,7 +65,7 @@ Changes should be made for testing as show below:
 
 * By removing all old track/release files for integrationdeployutilities (track/release) and include ONE file called integrationDeployUtilities.json.
 
-* Below code snippet is called is put inside integrationDeployUtilities.json:
+* Below code snippet is placed inside integrationDeployUtilities.json:
   
   ```json
   {
