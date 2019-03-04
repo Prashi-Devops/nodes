@@ -1,16 +1,16 @@
-# API Utilities
+# <a href="#top" id="top"></a># API Utilities
 
 This folder contains utilities required to validate and prime OpenAPI definition files before presenting them to the API Gateway.  The utilities include:
 
 * `AWS-Swagger-Tools.json` which is a Postman project file than can be used to Validate, Mock and Tag the OpenAPI definition files before presenting to the AWS Gateway.
 
-# Introduce changelog.md under integration-deploy-utilities
+# Introduce CHANGELOG.md to integration-deploy-utilities
 
 We are introducing a [CHANGELOG.md](https://github.dxc.com/Platform-DXC/release-pipeline/blob/9946c380f386c742af5ce4b9688d1ea9f99d0e54/docs/CHANGE.md ) under integration-deploy-utilities package in order to look the notable changes have been made between each release (or version).
 
 * The component must provide at the root level of the component zip package a file named `/CHANGELOG.md`.
 * Ensure to include the most recent version of the integration-deploy-utilities into the `/CHANGELOG.md`.
-
+[Top](#top)
 # Changes made in realease-utility-package.sh
 
 The Integration Deploy Utilities package is a common package used for deploying all APIs. This release package is not always required to be rebuilt - the deployment coordinator should be aware of changes which would require these steps to be performed.
@@ -20,7 +20,7 @@ The Integration Deploy Utilities package is a common package used for deploying 
   `zip -j ${RELEASE_FILE} track/release/pdxc/integration-deploy-utilities/changelog.md`.
   
 * We have used the -j option for the zip command to have the directory ignored and allowing the changelog.md file to be put into the root directory of the zip file i.e, under `integration-deploy-utilities`.
-
+[Top](#top)
 # How to test the process
 Changes are made for testing as show below:
 
@@ -64,6 +64,8 @@ Changes are made for testing as show below:
     "change_log":"tarck/release/integration-deploy-utilities/CHANGELOG.md"
    }
   ```
+  
+[Top](#top)  
 ## Positive testing
 
 * Once the changes made in `release-utility-package`.
@@ -79,6 +81,7 @@ Changes are made for testing as show below:
 
 * So that once you raise the pull-reuqest against `master-branch` .You can view the result is stored in the s3 bucket.     
 
+[Top](#top)
 ## Negative testing
 
 * If changelog does not have current release, then the pipeline should fail 
@@ -111,6 +114,7 @@ Changes are made for testing as show below:
   		[2019-03-03T14:51:34.822Z] Error: 'change_log' not defined in release specification.
   		[2019-03-03T14:51:34.822Z] Release verification exited with Errors.
 
+[Top](#top)
 
 * If the directory in the track/release file is wrong, the pipeline should fail
 * Make changes in the integrationDeployUtilities.json as show below:
@@ -137,5 +141,5 @@ Changes are made for testing as show below:
   	 	[2019-03-02T00:20:24.545Z] Release verification exited with Errors.
 
 
-      
+[Top](#top)      
 
