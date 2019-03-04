@@ -17,7 +17,7 @@ This folder contains utilities required to validate and prime OpenAPI definition
 
 * `AWS-Swagger-Tools.json` which is a Postman project file than can be used to Validate, Mock and Tag the OpenAPI definition files before presenting to the AWS Gateway.
 
-# <a href="#introduce" id="introduce"></a>Introduce CHANGELOG.md to integration-deploy-utilities
+## <a href="#introduce" id="introduce"></a>Introduce CHANGELOG.md to integration-deploy-utilities
 
 We are introducing a [CHANGELOG.md](https://github.dxc.com/Platform-DXC/release-pipeline/blob/9946c380f386c742af5ce4b9688d1ea9f99d0e54/docs/CHANGE.md ) under integration-deploy-utilities package in order to look the notable changes have been made between each release (or version).
 
@@ -26,7 +26,7 @@ We are introducing a [CHANGELOG.md](https://github.dxc.com/Platform-DXC/release-
 
 [Top](#top)
 
-# <a href="#changes" id="changes"></a> Changes made in realease-utility-package.sh
+## <a href="#changes" id="changes"></a> Changes made in realease-utility-package.sh
 
 The Integration Deploy Utilities package is a common package used for deploying all APIs. This release package is not always required to be rebuilt - the deployment coordinator should be aware of changes which would require these steps to be performed.
 
@@ -38,7 +38,7 @@ The Integration Deploy Utilities package is a common package used for deploying 
 
 [Top](#top)
 
-# <a href="process" id="process"></a>How to test the process
+## <a href="process" id="process"></a>How to test the process
 Changes should be made for testing as show below:
 
 * We can test the process by considering two stages from jenkins i.e, `Establish Required Work` and `Publish Release`.
@@ -84,7 +84,7 @@ Changes should be made for testing as show below:
   
 [Top](#top)  
 
-## <a href="#positive" id="positive"></a>Positive testing
+### <a href="#positive" id="positive"></a>Positive testing
 
 * Once the changes made in [`release-utility-package`](#changes).
 	
@@ -101,9 +101,9 @@ Changes should be made for testing as show below:
 
 [Top](#top)
 
-## <a href="#negative" id="negative"></a>Negative testing
+### <a href="#negative" id="negative"></a>Negative testing
 
-### <a href="#test1" id="test1"></a>Test case-1
+#### <a href="#test1" id="test1"></a>Test case-1
 
 * If changelog does not have current release, then the pipeline should fail 
 * By removing the latest version from the CHANGELOG.md file under `integration-deploy-utilities` folder:
@@ -115,7 +115,7 @@ Changes should be made for testing as show below:
 
 [Top](#top)
 
-### <a href="#test2" id="test2"></a>Test case-2
+#### <a href="#test2" id="test2"></a>Test case-2
 * If no changelog in the track/release file, the pipeline should fail.
 * Make changes in the integrationDeployUtilities.json as show below:
 ```json
@@ -139,7 +139,7 @@ Changes should be made for testing as show below:
 
 [Top](#top)
 
-### <a href="#test3" id="test3"></a>Test case-3
+#### <a href="#test3" id="test3"></a>Test case-3
 * If the directory in the track/release file is wrong, the pipeline should fail
 * Make changes in the integrationDeployUtilities.json as show below:
 ```json
