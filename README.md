@@ -1,4 +1,4 @@
-<a href="#top" id="top"></a> # INTEGRATION-API UTILITIES
+# <a href="#top" id="top"></a> INTEGRATION-API UTILITIES
 
 ## Table of Contents
 * [API Utilities](#api)
