@@ -7,6 +7,9 @@
 * [How to test the process](#process)
 	* [Positive testing](#positive)
 	* [Negative testing](#negative)
+		* [Testcase-1](#test1)
+		* [Testcase-2](#test2)
+		* [Testcase-3](#test3)
 
 ## <a href="#api" id="api"></a> API Utilities
 
@@ -100,7 +103,7 @@ Changes should be made for testing as show below:
 
 ## <a href="#negative" id="negative"></a>Negative testing
 
-### Test case-1
+### <a href="#test1" id="test1"></a>Test case-1
 
 * If changelog does not have current release, then the pipeline should fail 
 * By removing the latest version from the CHANGELOG.md file under `integration-deploy-utilities` folder:
@@ -112,7 +115,7 @@ Changes should be made for testing as show below:
 
 [Top](#top)
 
-### Test case-2
+### <a href="#test2" id="test2"></a>Test case-2
 * If no changelog in the track/release file, the pipeline should fail.
 * Make changes in the integrationDeployUtilities.json as show below:
 ```json
@@ -136,7 +139,7 @@ Changes should be made for testing as show below:
 
 [Top](#top)
 
-### Test case-3
+### <a href="#test3" id="test3"></a>Test case-3
 * If the directory in the track/release file is wrong, the pipeline should fail
 * Make changes in the integrationDeployUtilities.json as show below:
 ```json
