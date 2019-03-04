@@ -1,10 +1,16 @@
-# <a href="#top" id="top"></a># API Utilities
+## Table of Contents
+* API Utilities (#api)
+* Introduce CHANGELOG.md to integration-deploy-utilities (#introduce)
+* Changes made in realease-utility-package.sh (#changes)
+* How to test the process (#process)
+
+## <a href="#api" id="api"></a> API Utilities
 
 This folder contains utilities required to validate and prime OpenAPI definition files before presenting them to the API Gateway.  The utilities include:
 
 * `AWS-Swagger-Tools.json` which is a Postman project file than can be used to Validate, Mock and Tag the OpenAPI definition files before presenting to the AWS Gateway.
 
-# Introduce CHANGELOG.md to integration-deploy-utilities
+# <a href="#introduce" id="introduce"></a>Introduce CHANGELOG.md to integration-deploy-utilities
 
 We are introducing a [CHANGELOG.md](https://github.dxc.com/Platform-DXC/release-pipeline/blob/9946c380f386c742af5ce4b9688d1ea9f99d0e54/docs/CHANGE.md ) under integration-deploy-utilities package in order to look the notable changes have been made between each release (or version).
 
@@ -13,7 +19,7 @@ We are introducing a [CHANGELOG.md](https://github.dxc.com/Platform-DXC/release-
 
 [Top](#top)
 
-# Changes made in realease-utility-package.sh
+# <a href="#changes" id="changes"></a> Changes made in realease-utility-package.sh
 
 The Integration Deploy Utilities package is a common package used for deploying all APIs. This release package is not always required to be rebuilt - the deployment coordinator should be aware of changes which would require these steps to be performed.
 
@@ -25,7 +31,7 @@ The Integration Deploy Utilities package is a common package used for deploying 
 
 [Top](#top)
 
-# How to test the process
+# <a href="process" id="process"></a>How to test the process
 Changes are made for testing as show below:
 
 * We can test the process by considering two stages from jenkins i.e, `Establish Required Work` and `Publish Release`.
