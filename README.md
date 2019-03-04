@@ -1,4 +1,4 @@
-#<a href="#top" id="top"></a> INTEGRATION-API UTILITIES
+<a href="#top" id="top"></a> # INTEGRATION-API UTILITIES
 
 ## Table of Contents
 * [API Utilities](#api)
@@ -6,7 +6,7 @@
 * [Changes made in realease-utility-package.sh](#changes)
 * [How to test the process](#process)
 	* [Positive testing](#positive)
-	* [NEgative testing](#negative)
+	* [Negative testing](#negative)
 
 ## <a href="#api" id="api"></a> API Utilities
 
