@@ -36,7 +36,7 @@ The Integration Deploy Utilities package is a common package used for deploying 
 [Top](#top)
 
 # <a href="process" id="process"></a>How to test the process
-Changes are made for testing as show below:
+Changes should be made for testing as show below:
 
 * We can test the process by considering two stages from jenkins i.e, `Establish Required Work` and `Publish Release`.
   * Establish Required Work stage determines the new files added or updated.
