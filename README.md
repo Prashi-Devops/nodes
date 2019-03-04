@@ -96,10 +96,10 @@ Changes should be made for testing as show below:
       `aws s3 cp $RELEASE_FILE s3://bucket-name`
       exit 0
       fi
-* We are trying to copy the content in `$RELEASE_FILE` i.e, `integrationDeployUtilities.zip` in aws s3 bucket as shown below:
+* We are trying to copy the content  `$RELEASE_FILE` i.e, `integrationDeployUtilities.zip` to aws s3 bucket as shown below:
 	`aws s3 cp $RELEASE_FILE s3://bucket-name`
-* So that once you raise the pull-request against `master-branch` .The result integrationDeployUtilities.zip is stored in the s3 bucket. 
-* The process of copying can be seen through the jenkins server as shown below:
+* Once you raise a pull-request against `master-branch` .The result integrationDeployUtilities.zip is stored in the s3 bucket. 
+* The process of copying can be seen in the jenkins server as shown below:
 		
 		[2019-03-02T00:15:55.540Z] + aws s3 cp integration-deploy-utilities.zip s3://inf-test-buck
 		[2019-03-02T00:16:00.079Z] Completed 256.0 KiB/563.5 KiB (514.6 KiB/s) with 1 file(s) remaining
@@ -115,7 +115,7 @@ Changes should be made for testing as show below:
 #### <a href="#test1" id="test1"></a>Test case-1
 
 * If changelog does not have current release, then the pipeline should fail 
-* By removing the latest version from the CHANGELOG.md file under `integration-deploy-utilities` folder:
+* By removing the latest version from the CHANGELOG.md file under `integration-deploy-utilities` folder.
 * Result is as show below:
 
 		[2019-03-02T00:22:20.878Z] + node utilities/pipeline/release/verifyReleaseRequest.js pullrequest 2094
