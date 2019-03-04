@@ -1,8 +1,12 @@
+#<a href="#top" id="top"></a> INTEGRATION-API UTILITIES
+
 ## Table of Contents
 * [API Utilities](#api)
-* [Introduce CHANGELOG.md to integration-deploy-utilities] (#introduce)
-* [Changes made in realease-utility-package.sh] (#changes)
-* [How to test the process] (#process)
+* [Introduce CHANGELOG.md to integration-deploy-utilities](#introduce)
+* [Changes made in realease-utility-package.sh](#changes)
+* [How to test the process](#process)
+	* [Positive testing](#positive)
+	* [NEgative testing](#negative)
 
 ## <a href="#api" id="api"></a> API Utilities
 
@@ -77,7 +81,7 @@ Changes are made for testing as show below:
   
 [Top](#top)  
 
-## Positive testing
+## <a href="#positive" id="positive"></a>Positive testing
 
 * Once the changes made in `release-utility-package`.
 	
@@ -94,7 +98,7 @@ Changes are made for testing as show below:
 
 [Top](#top)
 
-## Negative testing
+## <a href="#negative" id="negative"></a>Negative testing
 
 ### Test case-1
 
