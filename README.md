@@ -32,11 +32,11 @@ Positive and Negative testing done
 * So given below is the code snippet of Jenkins file:
   ```json        
   stages {
-    stage('Establishment of Work'){
-    ...
-    }
+   	 stage('Establishment of Work'){
+   	 ...
+   	 }
 	
-    stage('Publish Release'){
+	 stage('Publish Release'){
 			steps{
 				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'pdxc-jenkins', usernameVariable: 'ARTIFACTORY_USER', passwordVariable: 'ARTIFACTORY_PASSWORD']]) {
 					sh '''
@@ -45,13 +45,13 @@ Positive and Negative testing done
 					sh 'node utilities/pipeline/release/verifyReleaseRequest.js pullrequest ${CHANGE_ID}'
 				}
 			}
-		}
-  }
-```
+	  }
+	```
 
 * By removing all old track/release files for integrationdeployutilities (track/release) and include ONE file called integrationDeployUtilities.json.
 
 * Below code snippet is called is put inside integrationDeployUtilities.json:
+  
   ```json
   {
     "tag_name": "IntegrationDeployUtilities(1.0.25)",
@@ -66,6 +66,8 @@ Positive and Negative testing done
     "change_log":"tarck/release/integration-deploy-utilities/CHANGELOG.md"
    }
   ```
+## Positive testing
+
 * Now looks like everything is good,so we can start with the positive testcase.We can test through the s3 bucket,make sure you have created bucket manually or throught cli and add the snippet  inside the `release-package.sh` as shown below:
     
       if [ $RELEASE_FILE = "integration-deploy-utilities.zip" ]
@@ -76,15 +78,15 @@ Positive and Negative testing done
       fi
 * So that once you raise the pull-reuqest against `master-branch` you can view the result is stored in the s3 bucket.     
 
-# Negative testing
+## Negative testing
 
 * If changelog does not have current release, then the pipeline should fail 
 * By removing the latest version from the CHANGELOG.md file under `integration-deploy-utilities` folder:
 * Result is as show below:
 
-`[2019-03-02T00:22:20.878Z] + node utilities/pipeline/release/verifyReleaseRequest.js pullrequest 2094
- [2019-03-02T00:22:21.446Z] Error: Release version '1.0.25' not found in Change Log.
- [2019-03-02T00:22:21.446Z] Release verification exited with Errors.`  
+		[2019-03-02T00:22:20.878Z] + node utilities/pipeline/release/verifyReleaseRequest.js pullrequest 2094
+ 		[2019-03-02T00:22:21.446Z] Error: Release version '1.0.25' not found in Change Log.
+ 		[2019-03-02T00:22:21.446Z] Release verification exited with Errors.
 
 
 * If no changelog in the track/release file, the pipeline should fail.
@@ -104,9 +106,9 @@ Positive and Negative testing done
    ```
 * Result is as show below:
 
- `[2019-03-03T14:51:34.279Z] + node utilities/pipeline/release/verifyReleaseRequest.js pullrequest 2094
-  [2019-03-03T14:51:34.822Z] Error: 'change_log' not defined in release specification.
-  [2019-03-03T14:51:34.822Z] Release verification exited with Errors.`
+ 		[2019-03-03T14:51:34.279Z] + node utilities/pipeline/release/verifyReleaseRequest.js pullrequest 2094
+  		[2019-03-03T14:51:34.822Z] Error: 'change_log' not defined in release specification.
+  		[2019-03-03T14:51:34.822Z] Release verification exited with Errors.
 
 
 * If the directory in the track/release file is wrong, the pipeline should fail
@@ -127,11 +129,11 @@ Positive and Negative testing done
   ```
 
 * Result is as show below:
- `[2019-03-02T00:20:24.286Z] + node utilities/pipeline/release/verifyReleaseRequest.js pullrequest 2094
-  [2019-03-02T00:20:24.545Z] Error: track/release/pdxc/CHANGELOG.md does not exist as a Change Log.
-  [2019-03-02T00:20:24.545Z] Error: ENOENT: no such file or directory, open 'track/release/pdxc/CHANGELOG.md'
-  [2019-03-02T00:20:24.545Z]     at Error (native)
-  [2019-03-02T00:20:24.545Z] Release verification exited with Errors.`
+ 		
+ 	 [2019-03-02T00:20:24.545Z] Error: track/release/pdxc/CHANGELOG.md does not exist as a Change Log.
+  	 [2019-03-02T00:20:24.545Z] Error: ENOENT: no such file or directory, open 'track/release/pdxc/CHANGELOG.md'
+  	 [2019-03-02T00:20:24.545Z]     at Error (native)
+  	 [2019-03-02T00:20:24.545Z] Release verification exited with Errors.
 
 
       
