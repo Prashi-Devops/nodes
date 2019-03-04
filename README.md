@@ -26,19 +26,18 @@ Positive and Negative testing done
 
 
 
-* We can test the process by considering two stages from jenkins i.e, `Establishment of Work` and `Publish release`.
-  * Establishment of work stage determines the new files added or updated.
+* We can test the process by considering two stages from jenkins i.e, `Establish Required Work` and `Publish Release`.
+  * Establish Required Work stage determines the new files added or updated.
   * Publish release stage is used for validate changelogs.
 * So given below is the code snippet of Jenkins file:
   ```json        
   stages {
-   	 stage('Establishment of Work'){
-   	 ...
-   	 }
+   	stage('Establish Required Work'){
+			....
+		}
 	
 	 stage('Publish Release'){
 			steps{
-				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'pdxc-jenkins', usernameVariable: 'ARTIFACTORY_USER', passwordVariable: 'ARTIFACTORY_PASSWORD']]) {
 					sh '''
 					bash -x release-package.sh
 					'''
@@ -76,7 +75,7 @@ Positive and Negative testing done
       `aws s3 cp $RELEASE_FILE s3://bucket-name`
       exit 0
       fi
-* So that once you raise the pull-reuqest against `master-branch` you can view the result is stored in the s3 bucket.     
+* So that once you raise the pull-reuqest against `master-branch` .You can view the result is stored in the s3 bucket.     
 
 ## Negative testing
 
