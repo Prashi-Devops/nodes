@@ -30,7 +30,7 @@ Positive and Negative testing done
   * Establishment of work stage determines the new files added or updated.
   * Publish release stage is used for validate changelogs.
 * So given below is the code snippet of Jenkins file:
-          
+  ```json        
   stages {
     stage('Establishment of Work'){
     ...
@@ -47,11 +47,13 @@ Positive and Negative testing done
 			}
 		}
   }
+```
 
 * By removing all old track/release files for integrationdeployutilities (track/release) and include ONE file called integrationDeployUtilities.json.
 
 * Below code snippet is called is put inside integrationDeployUtilities.json:
-  `{
+  ```json
+  {
     "tag_name": "IntegrationDeployUtilities(1.0.25)",
     "target_commitish": "master",
     "name": "Integration Deploy Utilities",
@@ -62,8 +64,8 @@ Positive and Negative testing done
     "api_bundle": [],
     "release_version": "1.0.25",
     "change_log":"tarck/release/integration-deploy-utilities/CHANGELOG.md"
-   }`
-  
+   }
+  ```
 * Now looks like everything is good,so we can start with the positive testcase.We can test through the s3 bucket,make sure you have created bucket manually or throught cli and add the snippet  inside the `release-package.sh` as shown below:
     
       if [ $RELEASE_FILE = "integration-deploy-utilities.zip" ]
@@ -87,7 +89,8 @@ Positive and Negative testing done
 
 * If no changelog in the track/release file, the pipeline should fail.
 * Make changes in the integrationDeployUtilities.json as show below:
-`{
+```json
+   {
     "tag_name": "IntegrationDeployUtilities(1.0.25)",
     "target_commitish": "master",
     "name": "Integration Deploy Utilities",
@@ -97,7 +100,8 @@ Positive and Negative testing done
     "api_name": "integrationDeployUtilities",
     "api_bundle": [],
     "release_version": "1.0.25"
-   }`
+   }
+   ```
 * Result is as show below:
 
  `[2019-03-03T14:51:34.279Z] + node utilities/pipeline/release/verifyReleaseRequest.js pullrequest 2094
@@ -107,7 +111,8 @@ Positive and Negative testing done
 
 * If the directory in the track/release file is wrong, the pipeline should fail
 * Make changes in the integrationDeployUtilities.json as show below:
-`{
+```json
+  {
     "tag_name": "IntegrationDeployUtilities(1.0.25)",
     "target_commitish": "master",
     "name": "Integration Deploy Utilities",
@@ -118,7 +123,8 @@ Positive and Negative testing done
     "api_bundle": [],
     "release_version": "1.0.25",
    "change_log":"tarck/release/CHANGELOG.md"
- }`
+  }
+  ```
 
 * Result is as show below:
  `[2019-03-02T00:20:24.286Z] + node utilities/pipeline/release/verifyReleaseRequest.js pullrequest 2094
