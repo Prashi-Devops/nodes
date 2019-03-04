@@ -22,9 +22,7 @@ The Integration Deploy Utilities package is a common package used for deploying 
 * We have used the -j option for the zip command to have the directory ignored and allowing the changelog.md file to be put into the root directory of the zip file i.e, under `integration-deploy-utilities`.
 
 # How to test the process
-Positive and Negative testing done
-
-
+Changes are made for testing as show below:
 
 * We can test the process by considering two stages from jenkins i.e, `Establish Required Work` and `Publish Release`.
   * Establish Required Work stage determines the new files added or updated.
@@ -68,9 +66,7 @@ Positive and Negative testing done
   ```
 ## Positive testing
 
-* We should the following snippet into the `release-utility-package.sh`. 
-  		
-	`zip -j ${RELEASE_FILE} track/release/pdxc/integration-deploy-utilities/CHANGELOG.md `
+* Once the changes made in `release-utility-package`.
 	
 * We can test through the s3 bucket,make sure you have created bucket manually or throught cli and add the snippet  inside the `release-package.sh` as shown below:
     
