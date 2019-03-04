@@ -44,6 +44,7 @@ Positive and Negative testing done
 					sh 'node utilities/pipeline/release/verifyReleaseRequest.js pullrequest ${CHANGE_ID}'
 				}
 			}
+		}
 	  }
 	```
 
@@ -129,10 +130,10 @@ Positive and Negative testing done
 
 * Result is as show below:
  		
- 	 [2019-03-02T00:20:24.545Z] Error: track/release/pdxc/CHANGELOG.md does not exist as a Change Log.
-  	 [2019-03-02T00:20:24.545Z] Error: ENOENT: no such file or directory, open 'track/release/pdxc/CHANGELOG.md'
-  	 [2019-03-02T00:20:24.545Z]     at Error (native)
-  	 [2019-03-02T00:20:24.545Z] Release verification exited with Errors.
+ 		[2019-03-02T00:20:24.545Z] Error: track/release/pdxc/CHANGELOG.md does not exist as a Change Log.
+  	 	[2019-03-02T00:20:24.545Z] Error: ENOENT: no such file or directory, open 'track/release/pdxc/CHANGELOG.md'
+  	 	[2019-03-02T00:20:24.545Z]     at Error (native)
+  	 	[2019-03-02T00:20:24.545Z] Release verification exited with Errors.
 
 
       
