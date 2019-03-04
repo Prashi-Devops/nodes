@@ -11,7 +11,7 @@ We are introducing a [CHANGELOG.md](https://github.dxc.com/Platform-DXC/release-
 * The component must provide at the root level of the component zip package a file named `/CHANGELOG.md`.
 * Ensure to include the most recent version of the integration-deploy-utilities into the `/CHANGELOG.md`.
 
-# Changes made in integration-deploy-utilities
+# Changes made in realease-utility-package.sh
 
 The Integration Deploy Utilities package is a common package used for deploying all APIs. This release package is not always required to be rebuilt - the deployment coordinator should be aware of changes which would require these steps to be performed.
 
