@@ -194,9 +194,9 @@ The Integration Deploy Utilities package is a common package used for deploying 
 
 If there are changes to the Integration Deploy Utilities package used for API Deployment this step should be performed *before* deploying the APIs.
 
-Create a json file with the following naming convention: integrationDeployUtilities-\<release_version>.json and place it in the [`track/release/pdxc/integration-deploy-utilities`](https://github.dxc.com/Platform-DXC/integration-api/tree/master/track/release/pdxc/integration-deploy-utilities) folder in the `integration-api/master` branch.
+Add the latest version release api-specification in integrationDeployUtilities.json and place it in the [`track/release/pdxc/integration-deploy-utilities`](https://github.dxc.com/Platform-DXC/integration-api/tree/master/track/release/pdxc/integration-deploy-utilities) folder in the `integration-api/master` branch.
 
-Example:  `integrationDeployUtilities_1.0.1.json`
+Example:  `integrationDeployUtilities.json`
 
 Note that when creating the track/release file there will be no files listed in the `api_bundle` field as shown in the example below.
 
