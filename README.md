@@ -83,7 +83,7 @@ Changes are made for testing as show below:
 
 ## <a href="#positive" id="positive"></a>Positive testing
 
-* Once the changes made in <a href="#changes" id="changes"></a> `release-utility-package`.
+* Once the changes made in [`release-utility-package`](#changes).
 	
 * We can test through the s3 bucket,make sure you have created bucket manually or throught cli and add the snippet  inside the `release-package.sh` as shown below:
     
