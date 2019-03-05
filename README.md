@@ -78,7 +78,7 @@ Changes should be made for testing as show below:
     "api_name": "integrationDeployUtilities",
     "api_bundle": [],
     "release_version": "1.0.25",
-    "change_log":"tarck/release/integration-deploy-utilities/CHANGELOG.md"
+    "change_log":"track/release/integration-deploy-utilities/CHANGELOG.md"
    }
   ```
   
@@ -162,7 +162,7 @@ Changes should be made for testing as show below:
     "api_name": "integrationDeployUtilities",
     "api_bundle": [],
     "release_version": "1.0.25",
-   "change_log":"tarck/release/CHANGELOG.md"
+   "change_log":"track/release/CHANGELOG.md"
   }
   ```
 
