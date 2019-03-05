@@ -26,7 +26,7 @@ We are introducing a [CHANGELOG.md](https://github.dxc.com/Platform-DXC/release-
 
 [Top](#top)
 
-## <a href="#changes" id="changes"></a> Changes made in realease-utility-package.sh
+## <a href="#changes" id="changes"></a> Changes made in release-utility-package.sh
 
 The Integration Deploy Utilities package is a common package used for deploying all APIs. This release package is not always required to be rebuilt - the deployment coordinator should be aware of changes which would require these steps to be performed.
 
