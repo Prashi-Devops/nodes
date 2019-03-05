@@ -3,7 +3,7 @@
 ## Table of Contents
 * [API Utilities](#api)
 * [Introduce CHANGELOG.md to integration-deploy-utilities](#introduce)
-* [Changes made in realease-utility-package.sh](#changes)
+* [Changes made in release-utility-package.sh](#changes)
 * [How to test the process](#process)
 	* [Positive testing](#positive)
 	* [Negative testing](#negative)
@@ -38,7 +38,7 @@ The Integration Deploy Utilities package is a common package used for deploying 
 
 [Top](#top)
 
-## <a href="process" id="process"></a>How to test the process
+## <a href="process" id="process"></a>How to test the process ?
 Changes should be made for testing as show below:
 
 * We can test the process by considering two stages from jenkins i.e, `Establish Required Work` and `Publish Release`.
@@ -88,7 +88,7 @@ Changes should be made for testing as show below:
 
 * Once the changes made in [`release-utility-package`](#changes).
 	
-* We can test through the s3 bucket,make sure you have created bucket manually  and add the snippet  inside the `release-package.sh` as shown below:
+* We can test through the s3 bucket, make sure you have created bucket manually  and add the snippet  inside the `release-package.sh` as shown below:
     
       if [ $RELEASE_FILE = "integration-deploy-utilities.zip" ]
       then
