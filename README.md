@@ -390,6 +390,8 @@ Description:
 		* Inbound Nested Flow Segment: {ServiceType}_from_APIGW
 		* Outbound Nested Flow Segment: {ServiceType}_to_CIS
 		* Inbound Service Definition: GenericService_{ServiceType}
+		* Template Direction: Inbound
+		* Template: Inbound_PDXC_REST_{ServiceType}.
 
 * Flow Segment for ServiceType to ConnectNow must have the following values:
 	* Properties:
@@ -397,8 +399,6 @@ Description:
 		* Target Owner: DXC
 		* Target Application: ConnectNow
 		* Template: Outbound_PDXC_REST_{ServiceType}
-		* Inbound Nested Flow Segment: {ServiceType}_from_CIS
-		* Outbound Nested Flow Segment: {ServiceType}_to_APIGW
 
 * Nested Flow segment for ServiceType from APIGW must have the following values:
 	* Properties:
