@@ -299,7 +299,7 @@ Success Criteria:
 ##  <a href="#templates" id="templates"></a>Templates 
 
 Pre Requisites
-* Maps need to be created.
+* Maps need to be created (maps are not a prerequisite to start templates, they are a prerequisite to finalizing templates).
 * Schemas
 * EndpointTypes
 
@@ -321,11 +321,19 @@ Success Criteria:
 		* Inbound Endpoint Type: Inbound PDXC REST
 		* Transaction Groups:
 			* "InboundReceive" and "InboundAckSend" must contains the follow transactions: Insert, Update and Close.
-		* Inbound Mapping.
-			* Mapping Name: Lite[ServiceType]V2_To_CISMessage.R1.0
-		* Outbound ACK Mapping
-			* Mapping Name: CISMessage_To_LiteResponse.R1.0
- 
+		* Select Inbound mapping and Translation icon.
+			* Select the source schema : [SchemaType][Dataconcept][Version]
+			* Select the target schema: CISMessage.R1.0
+			* Check in the Lock source schema, Lock target schema, Mark source as Boundary schema.
+			* Inbound Mapping:
+			  	Mapping Name: Lite[ServiceType]V2_To_CISMessage.R1.0
+		* Select Outbound ACK Mapping and Translation icon.
+			* Select the source schema: CISMessage.R1.0
+			* Select the target schema: LiteResponse
+			* Check in the Lock source schema, Lock target schema, Lock Mapping.
+			* Outbound ACK Mapping:
+				Mapping Name: CISMessage_To_LiteResponse.R1.0
+			
 * Outbound template must have the following values:
 	* Properties: 
 		* Template name:   Outbound_PDXC_REST_[ServiceType]
