@@ -342,10 +342,18 @@ Success Criteria:
 		* Outbound Endpoint Type: Outbound PDXC REST
 		* Transaction Groups:
 			* "OutboundSend"  and "OutboundAckReceive" must contains the follow transactions groups: Insert, Update and Close.
-		* Outbound Mapping
-			* Mapping Name: CISMessage_To_Lite[ServiceType]V2.R1.0
-		* Inbound ACK Mapping.
-			* Mapping Name: LiteResponse_To_CISMessage.R1.0
+		* Select Outbound Mapping and translation icon.
+			* Select the source schema: CISMessage.R1.0
+			* Select the target schema:  [SchemaType][Dataconcept][Version]
+			* Check in the  Lock source schema, Lock target schema, Lock Mapping.
+			* Outbound Mapping
+				Mapping Name: CISMessage_To_Lite[ServiceType]V2.R1.0
+		* Select Inbound ACK Mapping and Translation icon.
+			* Select the source schema :  LiteResponse
+			* Select the target schema: CISMessage.R1.0
+			* Check in the  Lock source schema, Lock target schema, Mark source as Boundary schema.
+			* Inbound ACK Mapping:
+				Mapping Name: LiteResponse_To_CISMessage.R1.0
 * Add Inbound_PDXC_REST_[ServiceType]  and Outbound_PDXC_REST_[ServiceType] in the SR Rapid Deployment Task.
 * Review by a TL
 * Testing result document.
