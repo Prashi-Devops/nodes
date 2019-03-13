@@ -390,8 +390,6 @@ Description:
 		* Inbound Nested Flow Segment: {ServiceType}_from_APIGW
 		* Outbound Nested Flow Segment: {ServiceType}_to_CIS
 		* Inbound Service Definition: GenericService_{ServiceType}
-		* Template Direction: Inbound
-		* Template: Inbound_PDXC_REST_{ServiceType}.
 
 * Flow Segment for ServiceType to ConnectNow must have the following values:
 	* Properties:
