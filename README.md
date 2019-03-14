@@ -7,12 +7,12 @@ When a new ServiceType is requested, each of the following areas should be inclu
 * [PreRequisites](#prerequisite)
 
 ## Standard (Green Line) task description
-* [ServiceType](#servicetype)    **DINESH**
+* [ServiceType](#servicetype)   
 * [Schema](#schema)				**DINESH**
 * [InboundService](#inboundservice)		**DINESH**
 * [Maps](#maps)						**DINESH**
 * [Templates](#templates)			**DINESH**
-* [Flow Segments](#flowsegments)		**DINESH**
+* [Flow Segments](#flowsegments)		
 * [Rapid Deploy SR](#rapiddeploysr)		**DINESH**
 * [Unit Testing GreenLine](#unitgreen)
 * [Post API Deploy](#postdeploy)
@@ -274,34 +274,52 @@ Provide in ServiceRamp a schema for the Service Type that matches the swagger de
  * EndpointTypes
 
 *Description*
- * Create the inbound and outbound template for the new service type.
-    ** Inbound template must have the following values
-        *** Template name: Inbound_PDXC_REST_[ServiceType]
-        *** Service Type: [ServiceType]
-        *** Template Type: CISBaseInboundSync
-        *** Inbound Endpoint Type: Inbound PDXC REST
-        *** Transaction Groups:
-        *** "InboundReceive" and "InboundAckSend" must contains the follow transactions: Insert, Update and Close.
-        *** Inbound Mapping.
-             **** Mapping Name: Lite[ServiceType]V2_To_CISMessage.R1.0
-        *** Outbound ACK Mapping
-             **** Mapping Name: CISMessage_To_LiteResponse.R1.0
-    ** Outbound template must have the following values
-        *** Template name: Outbound_PDXC_REST_[ServiceType]
-        *** Service Type: [ServiceType]
-        *** Template Type: CISBaseOutboundSync
-        *** Outbound Endpoint Type: Outbound PDXC REST
-        *** Transaction Groups:
-        *** "OutboundSend" and "OutboundAckReceive" must contain the following transactions groups: Insert, Update and Close.
-        *** Outbound Mapping
-             **** Mapping Name: CISMessage_To_Lite[ServiceType]V2.R1.0
-        *** Inbound ACK Mapping.
-             **** Mapping Name: LiteResponse_To_CISMessage.R1.0
+* Create the inbound and outbound template for the new service type.
+	* Inbound template must have the following values
+		* Template name: Inbound_PDXC_REST_[ServiceType]
+		* Service Type: [ServiceType]
+		* Template Type: CISBaseInboundSync
+		* Inbound Endpoint Type: Inbound PDXC REST
+		* Transaction Groups:
+		* "InboundReceive" and "InboundAckSend" must contains the follow transactions: Insert, Update and Close.
+		* Select Inbound mapping and translation icon:
+			* Select the source schema : [SchemaType][Dataconcept][Version]
+			* Select the target schema: CISMessage.R1.0
+			* Check in the Lock source schema, Lock target schema, Mark source as Boundary schema.
+			* Inbound Mapping:
+				Mapping Name: Lite[ServiceType]V2_To_CISMessage.R1.0
+		* Select Outbound ACK Mapping icon:
+			* Select the source schema: CISMessage.R1.0
+			* Select the target schema: LiteResponse
+			* Check in the Lock source schema, Lock target schema, Lock Mapping.
+			* Outbound ACK Mapping:
+				Mapping Name: CISMessage_To_LiteResponse.R1.0
+
+	* Outbound template must have the following values
+		* Template name: Outbound_PDXC_REST_[ServiceType]
+		* Service Type: [ServiceType]
+		* Template Type: CISBaseOutboundSync
+		* Outbound Endpoint Type: Outbound PDXC REST
+		* Transaction Groups:
+		* "OutboundSend" and "OutboundAckReceive" must contain the following transactions groups: Insert, Update and Close.
+		* Select Outbound Mapping and translation icon:
+			* Select the source schema: CISMessage.R1.0
+			* Select the target schema:  [SchemaType][Dataconcept][Version]
+			* Check in the  Lock source schema, Lock target schema, Lock Mapping.
+			* Outbound Mapping
+				Mapping Name: CISMessage_To_Lite[ServiceType]V2.R1.0
+		* Select Inbound ACK Mapping and Translation icon.
+			* Select the source schema :  LiteResponse
+			* Select the target schema: CISMessage.R1.0
+			* Check in the  Lock source schema, Lock target schema, Mark source as Boundary schema.
+			* Inbound ACK Mapping:
+				Mapping Name: LiteResponse_To_CISMessage.R1.0
+
 * Add the following information to the Rapid Deploy task
-  ** Template names
-  **  Set to "not custom" in the TemplatePublishType table
-  **  Set templates to active
-  **  For Catalog, it is imperative that NO OTHER templates are active but the two being added in this release.  There should be no others.
+	* Template names
+	* Set to "not custom" in the TemplatePublishType table
+	* Set templates to active
+	* For Catalog, it is imperative that NO OTHER templates are active but the two being added in this release.  There should be no others.
 
 *Success Criteria*
 * A flow can be created with the new inbound and outbound templates.
