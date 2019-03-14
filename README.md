@@ -165,7 +165,6 @@ Provide in ServiceRamp a schema for the Service Type that matches the swagger de
 
 *Description*
 
-* Ensure the 10 extra (customer) fields are in the schema
 * Ensure that any "simple" array structures have been converted to  "complex" array structures 
   ** These are instructions to make changes to handle arrays for eBond schemas (i.e. LiteChangeV2, LiteIncidentV2, ...etc). Reason for changing the structure is two-fold:
     *** The svcutil.exe will generate the datacontract without errors (otherwise it fails)
@@ -332,33 +331,38 @@ Create Flow Segment for ServiceType from ConnectNow
  * Templates need to be created (Inbound_PDXC_REST_{ServiceType} and Outbound_PDXC_REST_{ServiceType})
 
 *Description*
-* Line One
-	* Line Two
 
 
 * Flow segments are created in the Public Tenant
-	** Create Flow Segment for {ServiceType} from Existing Template - Inbound_PDXC_REST_{ServiceType}
-		*** Owner - DXC
-		*** Application - ConnectNow
-		*** Segment Name - {ServiceType}_from_PDXCConnectNow
-** Create Flow Segment for {ServiceType} from Existing Template - Outbound_PDXC_REST_{ServiceType}
-*** Owner - DXC
-*** Application - ConnectNow
-*** Segment Name - {ServiceType}_to_PDXCConnectNow
+	* Create Flow Segment for {ServiceType} from Existing Template - Inbound_PDXC_REST_{ServiceType}
+		* Owner - DXC
+		* Application - ConnectNow
+		* Segment Name - {ServiceType}_from_PDXCConnectNow
+		* Template Direction: Inbound
+		* Template: Inbound_PDXC_REST_{ServiceType}
+
+	* Create Flow Segment for {ServiceType} from Existing Template - Outbound_PDXC_REST_{ServiceType}
+		* Owner - DXC
+		* Application - ConnectNow
+		* Segment Name - {ServiceType}_to_PDXCConnectNow
+		* Template Direction: Outbound
+		* Template: Outbound_PDXC_REST_{ServiceType}
+
 * Add new Flow segment names to the SR Rapid Deploy Tasks
+
 * Add steps to the ServiceRamp post deploy instructions 
-** List new flow segments that are created and indicate that they must be manually configured
-** Reuse existing ConnectNow inbound endpoint
-** Create New outbound ConnectNow endpoint in the DXC INTERNAL tenant
-*** Endpoint Type - Outbound PDXC Rest
-*** ServiceType - New ServiceType
-*** Owner  - DXC
-*** Application - ConnectNow
-*** Ack Type - Synchronous
-*** Attachment Type - Base64
-*** Attachment Size - 9 MB
-*** Obtain URL id/pw for ConnectNow for new ServiceType
-** Publish new flow segments
+	* List new flow segments that are created and indicate that they must be manually configured
+	* Reuse existing ConnectNow inbound endpoint
+	* Create New outbound ConnectNow endpoint in the DXC INTERNAL tenant
+		* Endpoint Type - Outbound PDXC Rest
+		* ServiceType - New ServiceType
+		* Owner  - DXC
+		* Application - ConnectNow
+		* Ack Type - Synchronous
+		* Attachment Type - Base64
+		* Attachment Size - 9 MB
+		* Obtain URL id/pw for ConnectNow for new ServiceType
+* Publish new flow segments
 
 *Success Criteria*
 * When a flow is created for the {ServiceType}, the new flow segment(s) is available to be used in the flow and properly displays as "white".
