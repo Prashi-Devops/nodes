@@ -8,12 +8,12 @@ When a new ServiceType is requested, each of the following areas should be inclu
 
 ## Standard (Green Line) task description
 * [ServiceType](#servicetype)   
-* [Schema](#schema)				**DINESH**
+* [Schema](#schema)				
 * [InboundService](#inboundservice)		**DINESH**
-* [Maps](#maps)						**DINESH**
+* [Maps](#maps)						
 * [Templates](#templates)			
 * [Flow Segments](#flowsegments)		
-* [Rapid Deploy SR](#rapiddeploysr)		**DINESH**
+* [Rapid Deploy SR](#rapiddeploysr)		
 * [Unit Testing GreenLine](#unitgreen)
 * [Post API Deploy](#postdeploy)
 * [SR Manual Steps](#manualsteps)   **DINESH**** edgar has them **
