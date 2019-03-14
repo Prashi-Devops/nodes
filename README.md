@@ -170,20 +170,22 @@ Provide in ServiceRamp a schema for the Service Type that matches the swagger de
 		* The svcutil.exe will generate the datacontract without errors (otherwise it fails) 	
 		* This JSON generated from the XML structure (using the datacontract) will match the JSON expected by ConnectNow. 
 	* Incorrect way:
-      ``` {code}
-		<xs:element name="affectedCis" maxOccurs="unbounded" minOccurs="0" type="xs:string">
-      	  {code} 
+
+		{code}
+			<xs:element name="affectedCis" maxOccurs="unbounded" minOccurs="0" type="xs:string">
+		{code} 
       
 	* Correct way:
-     `````` {code}
-	<xs:element name="affectedCis" minOccurs="0">
-	      <xs:complexType>
-	           <xs:sequence>
-                 	<xs:element maxOccurs="unbounded" minOccurs="0" name="string" type="xs:string" />
-            	   </xs:sequence>
-       	      </xs:complexType>
-	</xs:element>
-       {code}
+     
+     		{code}
+			<xs:element name="affectedCis" minOccurs="0">
+	      			<xs:complexType>
+	           		   <xs:sequence>
+                 			<xs:element maxOccurs="unbounded" minOccurs="0" name="string" type="xs:string" />
+            	   	   	   </xs:sequence>
+       	      			</xs:complexType>
+			</xs:element>
+       		{code}
 
 * Upload the schema into ServiceRamp Sandbox (get temporary Engineer access)
 	* Ensure Canonical Schema is checked
