@@ -174,7 +174,7 @@ Provide in ServiceRamp a schema for the Service Type that matches the swagger de
 		{code}	
 			<xs:element name="affectedCis" maxOccurs="unbounded" minOccurs="0" type="xs:string">
 		{code} 
-      	```
+      	
       
 	* Correct way:
      	```	
@@ -187,7 +187,6 @@ Provide in ServiceRamp a schema for the Service Type that matches the swagger de
 				</xs:complexType>
 			</xs:element>
 		{code}
-	```
 	
 * Upload the schema into ServiceRamp Sandbox (get temporary Engineer access)
 	* Ensure Canonical Schema is checked
