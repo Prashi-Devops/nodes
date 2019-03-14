@@ -492,6 +492,28 @@ Output:
 
 ##  <a href="#developertesting" id="developertesting"></a>Developer Testing
 
+pre-requists:
+
+* Flow should be published.
+
+Description:
+
+* Check  the flow events once it is successfully pubished:
+	* The result would be like:
+		* Successfully Published to PDXC-API Gateway
+		* Successfully published to ConnectNow.
+
+* Verify the infRoute Table if the outbound routkey is added once the flow is published .
+* We can check the outbound services related logs in Cloudwatch .The result will be based on the route information
+
+Success criteria :
+
+* Successfully validated the outbound serivce in pdxc.
+
+Output:
+
+* Outbound is published ready for green line testing.
+
 [Top](#top)
 
 ## Standard (Red Line) Tasks
