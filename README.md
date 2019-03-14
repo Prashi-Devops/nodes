@@ -189,9 +189,11 @@ Provide in ServiceRamp a schema for the Service Type that matches the swagger de
 ```
 
 * Upload the schema into ServiceRamp Sandbox (get temporary Engineer access)
+	* Enter the new ServiceType in Schema Name textbox
 	* Ensure Canonical Schema is checked
 	* Ensure Canonical Type is External
 	* Select the correct ServiceType
+	* Upload the XSD Schema/WSDL(s) file using Browse option
 	* Update the task for SR Rapid deployment with the name and path of the Schema XSD
 
 *Naming Convention*
