@@ -9,7 +9,7 @@ When a new ServiceType is requested, each of the following areas should be inclu
 ## Standard (Green Line) task description
 * [ServiceType](#servicetype)   
 * [Schema](#schema)				
-* [InboundService](#inboundservice)		**DINESH**
+* [InboundService](#inboundservice)		
 * [Maps](#maps)						
 * [Templates](#templates)			
 * [Flow Segments](#flowsegments)		
@@ -236,7 +236,9 @@ Outputs:
 
 Description:
 
-* Create the Inbound Service in SR SB AWS
+* Create the Inbound Service for new ServiceType by using Register Inbound service option in SR SB AWS
+* Provide the Inbound Service name
+* Select the newly created Schema Name from dropdown
 * List of test cases
 * Test the Inbound Service
 	* Use it in a flow, publish and send transactions E2E (Use SOAP, Then Rest, PUT and Post methods)
