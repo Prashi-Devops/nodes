@@ -177,7 +177,7 @@ Provide in ServiceRamp a schema for the Service Type that matches the swagger de
       		```
       
 	* Correct way:
-     		````	
+     		```	
 		{code}
 			<xs:element name="affectedCis" minOccurs="0">
 				<xs:complexType>
@@ -187,7 +187,7 @@ Provide in ServiceRamp a schema for the Service Type that matches the swagger de
 				</xs:complexType>
 			</xs:element>
 		{code}
-		````
+		```
 * Upload the schema into ServiceRamp Sandbox (get temporary Engineer access)
 	* Ensure Canonical Schema is checked
 	* Ensure Canonical Type is External
