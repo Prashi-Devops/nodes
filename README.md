@@ -637,62 +637,62 @@ Pre Requisites
 
 Outputs
 
-* Inbound and Outbound template for the new service type 
+	* Inbound and Outbound template for the new service type 
 
 Description:
-* Create the inbound and outbound template for the new service type.
-* Test the template by creating a Test flow with the template and do the necessary validations.
+	* Create the inbound and outbound template for the new service type.
+	* Test the template by creating a Test flow with the template and do the necessary validations.
  
 Success Criteria:
  
-* Inbound template must have the following values:
-	* Properties: 
-		* Template name:  Inbound_PDXC_REST_[ServiceType]
-		* Service Type: [ServiceType]
-		* Template Type:  CISBaseInboundSync
-		* Inbound Endpoint Type: Inbound PDXC REST
-		* Transaction Groups:
-			* "InboundReceive" and "InboundAckSend" must contains the follow transactions: Insert, Update and Close.
-		* Select Inbound mapping and Translation icon.
-			* Select the source schema : [SchemaType][Dataconcept][Version]
-			* Select the target schema: CISMessage.R1.0
-			* Check in the Lock source schema, Lock target schema, Mark source as Boundary schema.
-			* Inbound Mapping:
-			  	Mapping Name: Lite[ServiceType]V2_To_CISMessage.R1.0
-		* Select Outbound ACK Mapping and Translation icon.
-			* Select the source schema: CISMessage.R1.0
-			* Select the target schema: LiteResponse
-			* Check in the Lock source schema, Lock target schema, Lock Mapping.
-			* Outbound ACK Mapping:
-				Mapping Name: CISMessage_To_LiteResponse.R1.0
+	* Inbound template must have the following values:
+		* Properties: 
+			* Template name:  Inbound_PDXC_REST_[ServiceType]
+			* Service Type: [ServiceType]
+			* Template Type:  CISBaseInboundSync
+			* Inbound Endpoint Type: Inbound PDXC REST
+			* Transaction Groups:
+				* "InboundReceive" and "InboundAckSend" must contains the follow transactions: Insert, Update and Close.
+			* Select Inbound mapping and Translation icon.
+				* Select the source schema : [SchemaType][Dataconcept][Version]
+				* Select the target schema: CISMessage.R1.0
+				* Check in the Lock source schema, Lock target schema, Mark source as Boundary schema.
+				* Inbound Mapping:
+				  	Mapping Name: Lite[ServiceType]V2_To_CISMessage.R1.0
+			* Select Outbound ACK Mapping and Translation icon.
+				* Select the source schema: CISMessage.R1.0
+				* Select the target schema: LiteResponse
+				* Check in the Lock source schema, Lock target schema, Lock Mapping.
+				* Outbound ACK Mapping:
+					Mapping Name: CISMessage_To_LiteResponse.R1.0
 			
-* Outbound template must have the following values:
-	* Properties: 
-		* Template name:   Outbound_PDXC_REST_[ServiceType]
-		* Service Type: [ServiceType]
-		* Template Type:  CISBaseOutboundSync
-		* Outbound Endpoint Type: Outbound PDXC REST
-		* Transaction Groups:
-			* "OutboundSend"  and "OutboundAckReceive" must contains the follow transactions groups: Insert, Update and Close.
-		* Select Outbound Mapping and translation icon.
-			* Select the source schema: CISMessage.R1.0
-			* Select the target schema:  [SchemaType][Dataconcept][Version]
-			* Check in the  Lock source schema, Lock target schema, Lock Mapping.
-			* Outbound Mapping
-				Mapping Name: CISMessage_To_Lite[ServiceType]V2.R1.0
-		* Select Inbound ACK Mapping and Translation icon.
-			* Select the source schema :  LiteResponse
-			* Select the target schema: CISMessage.R1.0
-			* Check in the  Lock source schema, Lock target schema, Mark source as Boundary schema.
-			* Inbound ACK Mapping:
-				Mapping Name: LiteResponse_To_CISMessage.R1.0
-* Add Inbound_PDXC_REST_[ServiceType]  and Outbound_PDXC_REST_[ServiceType] in the SR Rapid Deployment Task.
-* Review by a TL
-* Testing result document.
-* Add a note in the Rapid deployment task that this templates needs to be activated by default.
-* Add the new template id to the TemplatePublishType table.	
-* Add the new Transaction in the TransactionType table.
-* Add the template reference in TemplateDrawingSelector table
+	* Outbound template must have the following values:
+		* Properties: 
+			* Template name:   Outbound_PDXC_REST_[ServiceType]
+			* Service Type: [ServiceType]
+			* Template Type:  CISBaseOutboundSync
+			* Outbound Endpoint Type: Outbound PDXC REST
+			* Transaction Groups:
+				* "OutboundSend"  and "OutboundAckReceive" must contains the follow transactions groups: Insert, Update and Close.
+			* Select Outbound Mapping and translation icon.
+				* Select the source schema: CISMessage.R1.0
+				* Select the target schema:  [SchemaType][Dataconcept][Version]
+				* Check in the  Lock source schema, Lock target schema, Lock Mapping.
+				* Outbound Mapping
+					Mapping Name: CISMessage_To_Lite[ServiceType]V2.R1.0
+			* Select Inbound ACK Mapping and Translation icon.
+				* Select the source schema :  LiteResponse
+				* Select the target schema: CISMessage.R1.0
+				* Check in the  Lock source schema, Lock target schema, Mark source as Boundary schema.
+				* Inbound ACK Mapping:
+					Mapping Name: LiteResponse_To_CISMessage.R1.0
+	* Add Inbound_PDXC_REST_[ServiceType]  and Outbound_PDXC_REST_[ServiceType] in the SR Rapid Deployment Task.
+	* Review by a TL
+	* Testing result document.
+	* Add a note in the Rapid deployment task that this templates needs to be activated by default.
+	* Add the new template id to the TemplatePublishType table.	
+	* Add the new Transaction in the TransactionType table.
+	* Add the template reference in TemplateDrawingSelector table
 
 [Top](#top)
 
