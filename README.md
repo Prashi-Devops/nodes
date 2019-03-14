@@ -268,32 +268,32 @@ Success Criteria:
  * For Standard (green line, before the red-line custom functionality is needed) maps do not need lookups (data value translation)
 
 *Pre requisites*
- * Mapping Documents exist in Sharepoint that maps to and from the new service type and the CIS internal.
- ** Inventory/00_Common/External/Schema
+ * Mapping Documents exist in Sharepoint that maps to and from the new service type and the CIS internal
+ 	* Inventory/00_Common/External/Schema
  * Schemas from the new service type exist in Service Ramp SB AWS
  * LiteResponse_ToCISMessage and CISMessage_ToLiteResponse maps exists in Service Ramp
 
 *Description*
  * Create the to and from (between new service type and CIS Internal) maps in Service Ramp AWS Sandbox Under Global Tenant using the template editor
- ** Utilize the mapping spreadsheet in sharepoint to match the fields and perform any needed functions
- ** Map the Xtracustomerfields to extension
+ * Utilize the mapping spreadsheet in sharepoint to match the fields and perform any needed functions
+ * Map the Xtracustomerfields to extension
  * Include the mapping names in a SR Rapid Deploy package task
 
 *Naming Convention*
  * Output naming convention:
- ** Lite[ServiceType]+[Version]+_+To+_+[TargetSchema]
- ** Example: LiteIncidentV2_To_CISMessage
+ 	* Lite[ServiceType]+[Version]+_+To+_+[TargetSchema]
+ 	* Example: LiteIncidentV2_To_CISMessage
  * Input naming convention:
- ** [SourceSchema]+_+To_++Lite[ServiceType]+[Version]
- ** Example: CISMessage_To_LiteIncidentV2
+ 	* [SourceSchema]+_+To_++Lite[ServiceType]+[Version]
+ 	* Example: CISMessage_To_LiteIncidentV2
 
 *Deliverables*
  * Mapping for request schema for ServiceType to CIS Internal
- ** Lite\{ServiceType}V2 -> Canonical
+ 	* Lite\{ServiceType}V2 -> Canonical
  * Mapping for CIS Internal to request schema for ServiceType
- ** CIS Internal -> Lite\{ServiceType}V2
+ 	* CIS Internal -> Lite\{ServiceType}V2
  * Mapping for Lite Response should be verify (should already exists)
- ** LiteResponse_To_CISMessage
+ 	* LiteResponse_To_CISMessage
  * Inbound and outbound mapping for any response schema changes that are required for the new Service Type
 
 *Success Criteria*
