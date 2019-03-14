@@ -171,13 +171,13 @@ Provide in ServiceRamp a schema for the Service Type that matches the swagger de
 		* This JSON generated from the XML structure (using the datacontract) will match the JSON expected by ConnectNow. 
 	* Incorrect way:
 
-	`	{code}
-	`		<xs:element name="affectedCis" maxOccurs="unbounded" minOccurs="0" type="xs:string">
-	`	{code} 
+	```	{code}
+			<xs:element name="affectedCis" maxOccurs="unbounded" minOccurs="0" type="xs:string">
+		{code} 
       
 	* Correct way:
      
-		{code}
+	```	{code}
 			<xs:element name="affectedCis" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
