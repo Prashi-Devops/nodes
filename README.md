@@ -169,13 +169,13 @@ Provide in ServiceRamp a schema for the Service Type that matches the swagger de
 	* These are instructions to make changes to handle arrays for eBond schemas (i.e. LiteChangeV2, LiteIncidentV2, ...etc). Reason for changing the structure is two-fold:
 		* The svcutil.exe will generate the datacontract without errors (otherwise it fails) 	
 		* This JSON generated from the XML structure (using the datacontract) will match the JSON expected by ConnectNow. 
-      		* Wrong way :
+### Wrong way :
 
 ```xml
 <xs:element name="affectedCis" maxOccurs="unbounded" minOccurs="0" type="xs:string">
 ```
 
-* Correct way :
+### Correct way :
 
 
 ```xml
