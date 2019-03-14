@@ -175,7 +175,8 @@ Provide in ServiceRamp a schema for the Service Type that matches the swagger de
 <xs:element name="affectedCis" maxOccurs="unbounded" minOccurs="0" type="xs:string">
 ```
 
-		* Correct way :
+* Correct way :
+
 
 ```xml
 <xs:element name="affectedCis" minOccurs="0">
