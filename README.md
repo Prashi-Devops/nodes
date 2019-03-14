@@ -122,8 +122,8 @@ When a new Service Type is defined, the following are the pre-requisites to crea
 * Steps to introduce a new service type in Service Ramp :
        	
 	* Insert a row into [SSP_DB].[dbo].[ServiceType] table with values of new Service Type
-	* Insert a row into [SSP_DB].[dbo].[ServiceOffering] using ID of the new serviceType of step.
-	* Change Status to 1 in [SSP_DB].[dbo].[ServiceType] of the new service type row when it is ready to be usable.
+	* Insert a row into [SSP_DB].[dbo].[ServiceOffering] using ID of the new serviceType of above step
+	* Change Status to 1 in [SSP_DB].[dbo].[ServiceType] of the new service type row when it is ready to be used
 	* Insert rows into [SSP_DB].[dbo].[TemplateDrawingSelector] table with values of new Service Type based on ServiceOfferingId 
 	* Insert rows into [SSP_DB].[dbo].[TransactionType] table with values of new Service Type based on ServiceOfferingId
 
