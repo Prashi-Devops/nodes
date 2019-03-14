@@ -474,6 +474,18 @@ Success criteria:
 
 
 [Top](#top)
+##  <a href="#manualsteps" id="manualsteps"></a>Manual steps
+
+Pre Requisites:
+
+* New ServiceType should be deployed into the respective environment.
+
+Description:
+
+* We have to perform the manual steps as mentioned the below link:
+Manual Steps(https://github.dxc.com/Platform-DXC/integration-serviceramp/blob/master/internal/docs/DeploymentManualSteps.md)
+
+[Top](#top)
 
 ## Standard (Red Line) Tasks
 
