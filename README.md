@@ -16,8 +16,8 @@ When a new ServiceType is requested, each of the following areas should be inclu
 * [Rapid Deploy SR](#rapiddeploysr)		
 * [Unit Testing GreenLine](#unitgreen)
 * [Post API Deploy](#postdeploy)
-* [SR Manual Steps](#manualsteps)   **DINESH**** edgar has them **
-* ** DINESH **  add developer testing in DEV ** Edgar **
+* [SR Manual Steps](#manualsteps)   
+* [Developer Testing](#developertesting)
 * [Test Preparation](#testprep)
 * [Testing](#testing)
 >Note:   Missing the standard Developer tests in DEV Ask Edgar
@@ -482,8 +482,15 @@ Pre Requisites:
 
 Description:
 
-* We have to perform the manual steps as mentioned the below link:
+* We have to perform the manual steps as mentioned in the link: 
 	[Manual Steps](https://github.dxc.com/Platform-DXC/integration-serviceramp/blob/master/internal/docs/DeploymentManualSteps.md)
+
+Output:
+* Green line is ready for testing.
+
+[Top](#top)
+
+##  <a href="#developertesting" id="developertesting"></a>Developer Testing
 
 [Top](#top)
 
