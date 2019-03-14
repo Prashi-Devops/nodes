@@ -120,13 +120,13 @@ Architecture team has provided the name of the Service Type and a one sentence d
 *Description*
 
 Steps to introduce a new service type in Service Ramp:
-	1) Insert a row into [SSP_DB].[dbo}.[ServiceType] table with values of new Service Type
-	2) Insert a row into [SSP_DB].[dbo].[ServiceOffering] using ID of the new serviceType of step 1)
-	3) Change Status to 1 in [SSP_DB].[dbo].[ServiceType] of the new service type row when it is redy to be usable
+	* Insert a row into [SSP_DB].[dbo}.[ServiceType] table with values of new Service Type
+	* Insert a row into [SSP_DB].[dbo].[ServiceOffering] using ID of the new serviceType of step 1)
+	* Change Status to 1 in [SSP_DB].[dbo].[ServiceType] of the new service type row when it is redy to be usable
 
 Low level instructions:
-	1) Include in the Post deployment script ReferenceData_ServiceType.sql the new service type
-	1) Include in the Post deployment script ReferenceData_ServiceOfferinf.sql the new service offering related to the new service type 
+	* Include in the Post deployment script ReferenceData_ServiceType.sql the new service type
+	* Include in the Post deployment script ReferenceData_ServiceOfferinf.sql the new service offering related to the new service type 
  
 *Success Criteria*
 
