@@ -410,13 +410,8 @@ Pre Requisites:
 * All prior tasks have updated the Rapid Deploy task with the location and list of artifacts to include in the rapid deploy
 
 Output:
-* Zip file (??)
-* Install script (??)
-> Huahsin - need to know WHAT the output is specifically
-
-Definition:
-* use InitialImportAndCheck stored procedure to do something and get something
-> Huahsin - need a list of activities done to create rapid deploy
+* Creation of rapid_[ServiceType]_ebond package in Artifactory through pipeline.
+* Using rapid_[ServiceType]_ebond package in Artifactory to deploy ServiceRamp in target ServiceRamp environments. 
 
 Caveats:
 * Endpoint information will not be exported since they contain information specific to a region/environment.
@@ -430,12 +425,12 @@ Naming Convention:
 
 Success criteria:
 
-* The ServiceRamp flows, inbound services, templates, mappings, schemas, and look up tables identified
-* TIdentified the golden source where ServiceRamp artifacts can be exported. 
-* TUsing ServiceRamp InitialImportAndCheck stored procedure identified all required import/export artifacts
-* TAd-hoc SQL statements needed for CHANGE data type
-* TAll ServiceRamp artifacts exported and zipped to a package
-* TScript prepared to import zipped content into new ServiceRamp environment
+ The ServiceRamp flows, inbound services, templates, mappings, schemas, and look up tables identified
+* Identified the golden source where ServiceRamp artifacts can be exported. 
+* Using ServiceRamp InitialImportAndCheck stored procedure identified all required import/export artifacts
+* Ad-hoc SQL statements needed for CHANGE data type
+* All ServiceRamp artifacts exported and zipped to a package
+* Script prepared to import zipped content into new ServiceRamp environment
 
 
 [Top](#top)
