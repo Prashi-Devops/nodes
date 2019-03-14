@@ -11,7 +11,7 @@ When a new ServiceType is requested, each of the following areas should be inclu
 * [Schema](#schema)				**DINESH**
 * [InboundService](#inboundservice)		**DINESH**
 * [Maps](#maps)						**DINESH**
-* [Templates](#templates)			**DINESH**
+* [Templates](#templates)			
 * [Flow Segments](#flowsegments)		
 * [Rapid Deploy SR](#rapiddeploysr)		**DINESH**
 * [Unit Testing GreenLine](#unitgreen)
@@ -166,29 +166,30 @@ Provide in ServiceRamp a schema for the Service Type that matches the swagger de
 *Description*
 
 * Ensure that any "simple" array structures have been converted to  "complex" array structures 
-  ** These are instructions to make changes to handle arrays for eBond schemas (i.e. LiteChangeV2, LiteIncidentV2, ...etc). Reason for changing the structure is two-fold:
-    *** The svcutil.exe will generate the datacontract without errors (otherwise it fails)
-    *** This JSON generated from the XML structure (using the datacontract) will match the JSON expected by ConnectNow. 
-  ** Incorrect way:
-      {code}
-<xs:element name="affectedCis" maxOccurs="unbounded" minOccurs="0" type="xs:string">
-      {code}
-  ** Correct way:
-      {code}
-<xs:element name="affectedCis" minOccurs="0">
-      <xs:complexType>
-           <xs:sequence>
-                 <xs:element maxOccurs="unbounded" minOccurs="0" name="string" type="xs:string" />
-            </xs:sequence>
-       </xs:complexType>
- </xs:element>
-      {code}
+	* These are instructions to make changes to handle arrays for eBond schemas (i.e. LiteChangeV2, LiteIncidentV2, ...etc). Reason for changing the structure is two-fold:
+		* The svcutil.exe will generate the datacontract without errors (otherwise it fails) 	
+		* This JSON generated from the XML structure (using the datacontract) will match the JSON expected by ConnectNow. 
+	* Incorrect way:
+      `  {code}
+		`<xs:element name="affectedCis" maxOccurs="unbounded" minOccurs="0" type="xs:string">
+      	`{code}
+      
+	* Correct way:
+     ` {code}
+	<xs:element name="affectedCis" minOccurs="0">
+	      <xs:complexType>
+	           <xs:sequence>
+                 	<xs:element maxOccurs="unbounded" minOccurs="0" name="string" type="xs:string" />
+            	   </xs:sequence>
+       	      </xs:complexType>
+	</xs:element>
+       {code}`
 
 * Upload the schema into ServiceRamp Sandbox (get temporary Engineer access)
-  ** Ensure Canonical Schema is checked
-  ** Ensure Canonical Type is External
-  ** Select the correct ServiceType
-* Update the task for SR Rapid deployment with the name and path of the Schema XSD
+	* Ensure Canonical Schema is checked
+	* Ensure Canonical Type is External
+	* Select the correct ServiceType
+	* Update the task for SR Rapid deployment with the name and path of the Schema XSD
 
 *Naming Convention*
 
