@@ -483,7 +483,7 @@ Pre Requisites:
 Description:
 
 * We have to perform the manual steps as mentioned the below link:
-Manual Steps(https://github.dxc.com/Platform-DXC/integration-serviceramp/blob/master/internal/docs/DeploymentManualSteps.md)
+	[Manual Steps](https://github.dxc.com/Platform-DXC/integration-serviceramp/blob/master/internal/docs/DeploymentManualSteps.md)
 
 [Top](#top)
 
