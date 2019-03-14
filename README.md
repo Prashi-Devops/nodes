@@ -5,15 +5,39 @@ The purpose of this document is to list the necessary steps for adding a new Ser
 When a new ServiceType is requested, each of the following areas should be included as a Jira task.  The grooming information for each task should be copied from this document's associated section.
 
 * [PreRequisites](#prerequisite)
-* [Schema](#schema)
-* [InboundService](#inboundservice)
-* [Lookups](#lookups)
-* [Maps](#maps)
-* [Templates](#templates)
-* [Flow Segments](#flowsegments)
-* [Rapid Deploy SR](#rapiddeploysr)
-* [Rapid Deploy CIS](#rapiddeploycis)
+
+## Standard (Green Line) task description
+* [ServiceType](#servicetype)    **DINESH**
+* [Schema](#schema)				**DINESH**
+* [InboundService](#inboundservice)		**DINESH**
+* [Maps](#maps)						**DINESH**
+* [Templates](#templates)			**DINESH**
+* [Flow Segments](#flowsegments)		**DINESH**
+* [Rapid Deploy SR](#rapiddeploysr)		**DINESH**
+* [Unit Testing GreenLine](#unitgreen)
 * [Post API Deploy](#postdeploy)
+* [SR Manual Steps](#manualsteps)   **DINESH**** edgar has them **
+* ** DINESH **  add developer testing in DEV ** Edgar **
+* [Test Preparation](#testprep)
+* [Testing](#testing)
+>Note:   Missing the standard Developer tests in DEV Ask Edgar
+
+## Custom (Red Line) Task Description
+> Note that all Standard (green line) tasks are pre-requisites to Custom (red line) tasks
+
+> Note - red line tasks have not had the items done in Green line removed yet
+
+* [Schema](#rschema)
+* [InboundService](#rinboundservice)
+* [Lookups](#rlookups)
+* [Maps](#rmaps)
+* [Templates](#rtemplates)
+* [Flow Segments](#rflowsegments)
+* [Rapid Deploy SR](#rrapiddeploysr)
+* [Rapid Deploy CIS](#rrapiddeploycis)
+* [Unit Testing RedLine](#unitred)
+* [Post API Deploy](#postdeploy)
+* [SR Manual Steps](#rmanualsteps)
 * [Test Preparation](#testprep)
 * [Testing](#testing)
 
@@ -83,10 +107,314 @@ When a new Service Type is defined, the following are the pre-requisites to crea
 
 [Top](#top)
 
-##  <a href="#schema" id="schema"></a>Schema
+##  <a href="#servicetype" id="servicetype"></a>ServiceType
 
+*Requirement*
+
+Add the ability to create artifacts in ServiceRamp related to a Service Type that does not yet exist.
+
+*Pre-Requisites*
+
+Architecture team has provided the name of the Service Type and a one sentence description to be displayed on the Create Flow screen.
+
+*Description*
+
+Steps to introduce a new service type in Service Ramp:
+	1) Insert a row into [SSP_DB].[dbo}.[ServiceType] table with values of new Service Type
+	2) Insert a row into [SSP_DB].[dbo].[ServiceOffering] using ID of the new serviceType of step 1)
+	3) Change Status to 1 in [SSP_DB].[dbo].[ServiceType] of the new service type row when it is redy to be usable
+
+Low level instructions:
+	1) Include in the Post deployment script ReferenceData_ServiceType.sql the new service type
+	1) Include in the Post deployment script ReferenceData_ServiceOfferinf.sql the new service offering related to the new service type 
+ 
+*Success Criteria*
+
+* When a user logs into ServiceRamp, the following are true:
+    **   In the Flow Overview screen, the left pane list of Service Types includes the new Service Type
+    **   In the Flow Summary screen, a new box is displayed with the New ServiceType
+    **   In the Create Flow - Flow Setup screen, a new box is displayed with the new Service Type and the one sentence description provided by Architecture
+    **   A template, flow, flow segment, lookup table, etc. can be created for the new Service Type
+
+* The Rapid Deploy package contains post deployment scripts for the ServiceType and ServiceOffering
+
+*Output*
+* Post deployment script ReferenceData_ServiceType.sql the new service type
+* Post deployment script ReferenceData_ServiceOfferinf.sql the new service offering related to the new service type
+
+*Outcome*
+
+Once the success criteria is complete, a ServiceRamp Engineer can configure a Service Types artifacts.
+
+[Top](#top)
+
+##  <a href="#schema" id="schema"></a>Schema 
+
+*Requirement*
+
+Provide in ServiceRamp a schema for the Service Type that matches the swagger definition and the data model.
+
+*Pre-Requisites*
+* API Swagger documentation
+* XSD document in Sharepoint provided by Architecture https://dxcportal.sharepoint.com/sites/IntegrationFramework/Inventory/00_Common/External/Schema/
+
+*Description*
+
+* Ensure the 10 extra (customer) fields are in the schema
+* Ensure that any "simple" array structures have been converted to  "complex" array structures 
+  ** These are instructions to make changes to handle arrays for eBond schemas (i.e. LiteChangeV2, LiteIncidentV2, ...etc). Reason for changing the structure is two-fold:
+    *** The svcutil.exe will generate the datacontract without errors (otherwise it fails)
+    *** This JSON generated from the XML structure (using the datacontract) will match the JSON expected by ConnectNow. 
+  ** Incorrect way:
+      {code}
+<xs:element name="affectedCis" maxOccurs="unbounded" minOccurs="0" type="xs:string">
+      {code}
+  ** Correct way:
+      {code}
+<xs:element name="affectedCis" minOccurs="0">
+      <xs:complexType>
+           <xs:sequence>
+                 <xs:element maxOccurs="unbounded" minOccurs="0" name="string" type="xs:string" />
+            </xs:sequence>
+       </xs:complexType>
+ </xs:element>
+      {code}
+
+* Upload the schema into ServiceRamp Sandbox (get temporary Engineer access)
+  ** Ensure Canonical Schema is checked
+  ** Ensure Canonical Type is External
+  ** Select the correct ServiceType
+* Update the task for SR Rapid deployment with the name and path of the Schema XSD
+
+*Naming Convention*
+
+* [SchemaType][Dataconcept][Version]. Example:  LiteChangeV2
+
+*Deliverables*
+
+* XSD for message format defined using specified criteria
+* XSD loaded into ServiceRamp Sandbox
+* Rapid Deploy task updated with Schema name
+
+*Success Criteria*
+
+* The XSD needs to be stored in SR SB AWS (as a source resource)
+* xsd matches the definition of the message to be used in PDXC ebonds 
+* Latest xsd is in sharepoint 
+* SR Rapid Deploy task includes the latest xsd
+* The database has been validated that the correct settings are in place to ensure that the Schema will show up when selecting schemas for the Service Type
+* Test Document created and uploaded to the Jira task
+* Review by a tech lead
+
+*Outcome*
+
+* Once this story is complete, the schema will be available in ServiceRamp ready for specifying in Templates and Maps.
+
+
+[Top](#top)
+
+##  <a href="#maps" id="maps"></a>Maps 
+
+*Requirement*
+ * Create the to and from (between new service type and CIS Internal) maps in Service Ramp AWS Sandbox
+ * For Standard (green line, before the red-line custom functionality is needed) maps do not need lookups (data value translation)
+
+*Pre requisites*
+ * Mapping Documents exist in Sharepoint that maps to and from the new service type and the CIS internal.
+ ** Inventory/00_Common/External/Schema
+ * Schemas from the new service type exist in Service Ramp SB AWS
+ * LiteResponse_ToCISMessage and CISMessage_ToLiteResponse maps exists in Service Ramp
+
+*Description*
+ * Create the to and from (between new service type and CIS Internal) maps in Service Ramp AWS Sandbox Under Global Tenant using the template editor
+ ** Utilize the mapping spreadsheet in sharepoint to match the fields and perform any needed functions
+ ** Map the Xtracustomerfields to extension
+ * Include the mapping names in a SR Rapid Deploy package task
+
+*Naming Convention*
+ * Output naming convention:
+ ** Lite[ServiceType]+[Version]+_+To+_+[TargetSchema]
+ ** Example: LiteIncidentV2_To_CISMessage
+ * Input naming convention:
+ ** [SourceSchema]+_+To_++Lite[ServiceType]+[Version]
+ ** Example: CISMessage_To_LiteIncidentV2
+
+*Deliverables*
+ * Mapping for request schema for ServiceType to CIS Internal
+ ** Lite\{ServiceType}V2 -> Canonical
+ * Mapping for CIS Internal to request schema for ServiceType
+ ** CIS Internal -> Lite\{ServiceType}V2
+ * Mapping for Lite Response should be verify (should already exists)
+ ** LiteResponse_To_CISMessage
+ * Inbound and outbound mapping for any response schema changes that are required for the new Service Type
+
+*Success Criteria*
+ * Mapping is testing in ServiceRamp using the Map Test feature to ensure that the fields are mapped correctly
+ * SR Rapid Deploy task include latest mapping name
+ * Test Document created and uploaded to the Jira task
+ * Review by a tech lead
+
+*Outcome*
+ *  Once this story is complete and the maps exist for the ServiceType, the Templates can be finalized to be activated for use to create Flow Segments and flows
+
+[Top](#top)
+
+##  <a href="#templates" id="templates"></a>Templates 
+
+*Requirements*
+ * Create an Inbound and Outbound PDXC Templates for the new ServiceType
+
+*Pre Requisites*
+ * Maps need to be created (maps are not a prerequisite to start templates, they are a prerequisite to finalizing templates
+ * Schemas
+ * EndpointTypes
+
+*Description*
+ * Create the inbound and outbound template for the new service type.
+    ** Inbound template must have the following values
+        *** Template name: Inbound_PDXC_REST_[ServiceType]
+        *** Service Type: [ServiceType]
+        *** Template Type: CISBaseInboundSync
+        *** Inbound Endpoint Type: Inbound PDXC REST
+        *** Transaction Groups:
+        *** "InboundReceive" and "InboundAckSend" must contains the follow transactions: Insert, Update and Close.
+        *** Inbound Mapping.
+             **** Mapping Name: Lite[ServiceType]V2_To_CISMessage.R1.0
+        *** Outbound ACK Mapping
+             **** Mapping Name: CISMessage_To_LiteResponse.R1.0
+    ** Outbound template must have the following values
+        *** Template name: Outbound_PDXC_REST_[ServiceType]
+        *** Service Type: [ServiceType]
+        *** Template Type: CISBaseOutboundSync
+        *** Outbound Endpoint Type: Outbound PDXC REST
+        *** Transaction Groups:
+        *** "OutboundSend" and "OutboundAckReceive" must contain the following transactions groups: Insert, Update and Close.
+        *** Outbound Mapping
+             **** Mapping Name: CISMessage_To_Lite[ServiceType]V2.R1.0
+        *** Inbound ACK Mapping.
+             **** Mapping Name: LiteResponse_To_CISMessage.R1.0
+* Add the following information to the Rapid Deploy task
+  ** Template names
+  **  Set to "not custom" in the TemplatePublishType table
+  **  Set templates to active
+  **  For Catalog, it is imperative that NO OTHER templates are active but the two being added in this release.  There should be no others.
+
+*Success Criteria*
+* A flow can be created with the new inbound and outbound templates.
+* A flow segment can be created with the new inbound and outbound templates
+* When a user displays a flow or flow segment using the PDXC inbound and outbound templates, the boundary schema cannot be changed.  (the schema sent in or received from the source or target system cannot be modified to a different version of the standard message)
+* A test result document is created and attached to this Jira
+* Review by a TL
+
+*Deliverables*
+ * PDXC Inbound template for new service type
+ * PDXC outbound template for new service type
+ * Instructions in Rapid deploy for installing new template
+
+*Outcome*
+ * New inbound and outbound templates for Catalog exist so that the maps can be completed and then the flow segments and flows can be created.
+
+ 
+
+[Top](#top)
+
+##  <a href="#flowsegments" id="flowsegments"></a>Flow segments
+*Requirement*
+
+Create Flow Segment for ServiceType from ConnectNow
+
+*Pre-Requisites*
+ * Templates need to be created (Inbound_PDXC_REST_{ServiceType} and Outbound_PDXC_REST_{ServiceType})
+
+*Description*
+* Line One
+	* Line Two
+
+
+* Flow segments are created in the Public Tenant
+	** Create Flow Segment for {ServiceType} from Existing Template - Inbound_PDXC_REST_{ServiceType}
+		*** Owner - DXC
+		*** Application - ConnectNow
+		*** Segment Name - {ServiceType}_from_PDXCConnectNow
+** Create Flow Segment for {ServiceType} from Existing Template - Outbound_PDXC_REST_{ServiceType}
+*** Owner - DXC
+*** Application - ConnectNow
+*** Segment Name - {ServiceType}_to_PDXCConnectNow
+* Add new Flow segment names to the SR Rapid Deploy Tasks
+* Add steps to the ServiceRamp post deploy instructions 
+** List new flow segments that are created and indicate that they must be manually configured
+** Reuse existing ConnectNow inbound endpoint
+** Create New outbound ConnectNow endpoint in the DXC INTERNAL tenant
+*** Endpoint Type - Outbound PDXC Rest
+*** ServiceType - New ServiceType
+*** Owner  - DXC
+*** Application - ConnectNow
+*** Ack Type - Synchronous
+*** Attachment Type - Base64
+*** Attachment Size - 9 MB
+*** Obtain URL id/pw for ConnectNow for new ServiceType
+** Publish new flow segments
+
+*Success Criteria*
+* When a flow is created for the {ServiceType}, the new flow segment(s) is available to be used in the flow and properly displays as "white".
+* The newly created flow(s) can be tested end to end.
+* Test results are created and attached to Jira.
+* Review by a TL
+
+*Deliverables*
+* Inbound Flow Segment in ServiceRamp SandBox
+* Outbound Flow Segment in ServiceRamp Sandbox
+* Added notes to the SR Rapid Deploy Jira Task
+* Added notes for the SR Manual Deploy Steps
+
+*Outcome*
+* Flow segments are ready for the Rapid Deploy to be completed
+
+[Top](#top)
+
+##  <a href="#rapiddeploysr" id="rapiddeploysr"></a>Rapid Deploy SR 
+
+Pre Requisites:
+* All artifacts are complete (schemas, maps, inbound services, flow segments, templates and lookup tables)
+* All prior tasks have updated the Rapid Deploy task with the location and list of artifacts to include in the rapid deploy
+
+Output:
+* Zip file (??)
+* Install script (??)
+> Huahsin - need to know WHAT the output is specifically
+
+Definition:
+* use InitialImportAndCheck stored procedure to do something and get something
+> Huahsin - need a list of activities done to create rapid deploy
+
+Caveats:
+* Endpoint information will not be exported since they contain information specific to a region/environment.
+
+Naming Convention:
+
+* Script file located in TFS with the following naming convention
+	* somename...
+* Install script located in TFS with the following naming convention
+	* somename...
+
+Success criteria:
+
+* The ServiceRamp flows, inbound services, templates, mappings, schemas, and look up tables identified
+* TIdentified the golden source where ServiceRamp artifacts can be exported. 
+* TUsing ServiceRamp InitialImportAndCheck stored procedure identified all required import/export artifacts
+* TAd-hoc SQL statements needed for CHANGE data type
+* TAll ServiceRamp artifacts exported and zipped to a package
+* TScript prepared to import zipped content into new ServiceRamp environment
+
+
+[Top](#top)
+
+## Standard (Red Line) Tasks
+
+##  <a href="#rschema" id="rschema"></a>Schema 
 Pre-Requisites
 * API Swagger documentation
+> NOTE:  THIS TASK REQUIRES UPDATE TO SHOW ONLY WHAT IS REMAINING AFTER GREEN LINE DONE
 
 Outputs from this step are:
 
@@ -129,29 +457,29 @@ Success Criteria:
 * Review by a tech lead
 
 
-##  <a href="#xsd" id="xsd"></a>XSD
+##  <a href="#rxsd" id="rxsd"></a>XSD
 * ServiceRamp currently requires the schema to be defined in xsd format with the following special considerations
 
 These are instructions to make changes to handle arrays for eBond schemas (i.e. LiteChangeV2, LiteIncidentV2, ...etc). Reason for changing the structure is two-fold:
  * The svcutil.exe will generate the datacontract without errors (otherwise it fails)
- * This JSON generated from the XML structure (using the datacontract) will match the JSON expected by ConnectNow. 
+ * This JSON generated from the XML structure (using the datacontract) will match the JSON expected by ConnectNow. 
 
 #### Wrong way for eBond lite schemas:
 
 ```xml
 <xs:element name="affectedCis" maxOccurs="unbounded" minOccurs="0" type="xs:string">
 ```
- 
+ 
 
 #### Correct way for eBond lite schemas:
 
 ```xml
 <xs:element name="affectedCis" minOccurs="0">
-      <xs:complexType>
-           <xs:sequence>
-                 <xs:element maxOccurs="unbounded" minOccurs="0" name="string" type="xs:string" />
-            </xs:sequence>
-       </xs:complexType>
+      <xs:complexType>
+           <xs:sequence>
+                 <xs:element maxOccurs="unbounded" minOccurs="0" name="string" type="xs:string" />
+            </xs:sequence>
+       </xs:complexType>
  </xs:element>
 ```
 
@@ -160,7 +488,7 @@ Use svcutil.exe to generate the datacontract.
 
 [Top](#top)
 
-##  <a href="#inboundservice" id="inboundservice"></a>Inbound Services
+##  <a href="#rinboundservice" id="rinboundservice"></a>Inbound Services
 
 Pre Requisites
 
@@ -200,7 +528,8 @@ Success Criteria:
 
 [Top](#top)
 
-##  <a href="#lookups" id="lookups"></a>Lookups 
+
+##  <a href="#rlookups" id="rlookups"></a>Lookups 
 
 Pre Requisites
 * Model document 
@@ -241,7 +570,8 @@ Success Criteria:
 
 [Top](#top)
 
-##  <a href="#maps" id="maps"></a>Maps 
+
+##  <a href="#rmaps" id="rmaps"></a>Maps 
 Pre requisites:
 
 * Mapping Documents existing in Sharepoint that maps to and from the new service type and the CIS internal.
@@ -295,6 +625,8 @@ Success Criteria:
 * Review by a tech lead
 
 [Top](#top)
+
+##  <a href="#rtemplates" id="rtemplates"></a>Templates 
 
 ##  <a href="#templates" id="templates"></a>Templates 
 
@@ -364,7 +696,7 @@ Success Criteria:
 
 [Top](#top)
 
-##  <a href="#flowsegments" id="flowsegments"></a>Flow segments
+##  <a href="#rflowsegments" id="rflowsegments"></a>Flow segments
 
 Pre Requisites
 * Templates need to be created (Inbound_PDXC_REST_[ServiceType] and Outbound_PDXC_REST_[ServiceType])
@@ -397,6 +729,8 @@ Description:
 		* Target Owner: DXC
 		* Target Application: ConnectNow
 		* Template: Outbound_PDXC_REST_{ServiceType}
+		* Inbound Nested Flow Segment: {ServiceType}_from_CIS
+		* Outbound Nested Flow Segment: {ServiceType}_to_APIGW
 
 * Nested Flow segment for ServiceType from APIGW must have the following values:
 	* Properties:
@@ -477,7 +811,7 @@ Success Criteria:
 
 [Top](#top)
 
-##  <a href="#rapiddeploysr" id="rapiddeploysr"></a>Rapid Deploy SR 
+##  <a href="#rrapiddeploysr" id="rrapiddeploysr"></a>Rapid Deploy SR 
 
 Pre Requisites:
 * All artifacts are complete (schemas, maps, inbound services, flow segments, templates and lookup tables)
@@ -514,21 +848,21 @@ Success criteria:
 
 [Top](#top)
 
-##  <a href="#rapiddeploycis" id="rapiddeploycis"></a>Rapid Deploy CIS 
+##  <a href="#rrapiddeploycis" id="rrapiddeploycis"></a>Rapid Deploy CIS 
 
 CIS Rapid Deploy
 
-Follow instructions in [Share Point CISRapidDeployment documentation|https://dxcportal.sharepoint.com/:w:/s/IntegrationFramework/ETcr3D7ZCnROvGkW5CvyraoBB4cOkBsoy17H8MBxby0pew?e=VlKfXT] to group DataContract, Mapping, Schema, and deployment scripts C# codes into single Visual Studio project.
+Follow instructions in [Share Point CISRapidDeployment documentation|https://dxcportal.sharepoint.com/:w:/s/IntegrationFramework/ETcr3D7ZCnROvGkW5CvyraoBB4cOkBsoy17H8MBxby0pew?e=VlKfXT] to group DataContract, Mapping, Schema, and deployment scripts C# codes into single Visual Studio project.
 
- Outputs from this steps are:
- * A single Visual Studio solution checked into TFS.  The contents of the solution should include:
- 		* 2 VS projects for LiteChange & LiteResponse data contract ( can same LiteResponse delivered with LiteIncident be used here?).  The data contracts are generated from svcutil.exe utility.  
- 		* 4 VS projects for mapping defined in mapping section [Create New ServiceType Maps|https://github.dxc.com/Platform-DXC/integration-serviceramp/blob/master/internal/docs/HOWTO_Create_New_ServiceType.md#maps].  The mappings are defined in ServiceRamp, exported as XSLT and included as .xslt file in the VS map project.
- 		* 2 VS projects for Schema , LiteChange & LiteResponse (again LiteResponse needed every time?).  The schema, .xsd, files are uploaded in ServiceRamp.  The same .xsd files are used as project files.
+ Outputs from this steps are:
+ * A single Visual Studio solution checked into TFS.  The contents of the solution should include:
+ 		* 2 VS projects for LiteChange & LiteResponse data contract ( can same LiteResponse delivered with LiteIncident be used here?).  The data contracts are generated from svcutil.exe utility.  
+ 		* 4 VS projects for mapping defined in mapping section [Create New ServiceType Maps|https://github.dxc.com/Platform-DXC/integration-serviceramp/blob/master/internal/docs/HOWTO_Create_New_ServiceType.md#maps].  The mappings are defined in ServiceRamp, exported as XSLT and included as .xslt file in the VS map project.
+ 		* 2 VS projects for Schema , LiteChange & LiteResponse (again LiteResponse needed every time?).  The schema, .xsd, files are uploaded in ServiceRamp.  The same .xsd files are used as project files.
  		* CIS\{rapid deploy version #}_NRT_RapidDeploy VS project that includes deployment PowerShell and any AD-HOC SQL scripts.
- *  TFS build defined to create rapid deployment installation .MSI file on command
+ *  TFS build defined to create rapid deployment installation .MSI file on command
 
-The CIS Rapid Deploy solution can be built as schemas, mappings, look up table, ETC get developed.  As the unit and integration tests commences, it is preferred to build (compile) DLLs off of the VS build jobs.
+The CIS Rapid Deploy solution can be built as schemas, mappings, look up table, ETC get developed.  As the unit and integration tests commences, it is preferred to build (compile) DLLs off of the VS build jobs.
 
 Success Criteria includes:
 * Projects can be built on demand and deployed to target servers
@@ -536,6 +870,8 @@ Success Criteria includes:
 * Single execution scripts to deliver to L3
 
 [Top](#top)
+
+## Testing Tasks (will split to standard/vs custom later)
 
 ## <a href="#postdeploy" id="postdeploy"></a>Post API Deploy
 
@@ -583,13 +919,13 @@ RouteKeys are as follows:
 
  **Pre-requisites:**
 
-* The [ServiceType] API  must be present in an AWS environment before permissions can be granted since the API name is validated.
+* The [ServiceType] API  must be present in an AWS environment before permissions can be granted since the API name is validated.
 * The ebdApiUser exists in the environment (this is created automatically during integration-aas deployments)
 * The usercnebond1 user exists in the environment (this is manually created on-demand by the integration team)
 
 **Outputs:**
 
- Updated user permissions.
+ Updated user permissions.
 
 **Description:**
 
@@ -614,15 +950,15 @@ N/A for this task.
 
 **Outputs:**
 
- Standard Routes in the infRoute table in each supported AWS Environment.
+ Standard Routes in the infRoute table in each supported AWS Environment.
 
 **Description:**
 
-Create a Route in all environments to access the API.  Follow the sample conventions noted below.  Refer to the parent story for the RouteKey to be used in each environment. 
+Create a Route in all environments to access the API.  Follow the sample conventions noted below.  Refer to the parent story for the RouteKey to be used in each environment. 
 
 Validate the RouteInfo path and credentials.
 
-Example:  US Domestic SANDBOX / DEV / DEV2
+Example:  US Domestic SANDBOX / DEV / DEV2
 ```
 {code:java}
 {
@@ -644,7 +980,7 @@ Example:  US Domestic SANDBOX / DEV / DEV2
 
 **Naming Conventions:**
 
-Refer to the parent story for the RouteKey to be used in each environment. 
+Refer to the parent story for the RouteKey to be used in each environment. 
 
 **Success Criteria:**
 
@@ -723,20 +1059,20 @@ Postman Environment files for each supported AWS environment.
 
 **Description:**
 
-Obtain data specific to the [ServiceType] to utilize in the environment files for the Integration Tests.  The data is environment-specific and will need to be validated against each environment before the testing package can be released into the release-pipeline.  This data should be associated to a test company, not a live customer.
+Obtain data specific to the [ServiceType] to utilize in the environment files for the Integration Tests.  The data is environment-specific and will need to be validated against each environment before the testing package can be released into the release-pipeline.  This data should be associated to a test company, not a live customer.
 
 A single environment file should be created which supports both eBond and Request/Reply for a given [ServiceType] since the data overlaps.
 
 **Naming Convention:**
 
-There currently is no naming convention defined for the specific data points as we are using existing data for a test company.  If the need exists to directly onboard data in support of this task a naming convention should be documented for consistency and repeatability.  Onboarding of test data is included as a pre-requisite for any service type.
+There currently is no naming convention defined for the specific data points as we are using existing data for a test company.  If the need exists to directly onboard data in support of this task a naming convention should be documented for consistency and repeatability.  Onboarding of test data is included as a pre-requisite for any service type.
 
-The output files will follow the [Postman Test Collection Standards|https://github.dxc.com/Platform-DXC/integration-aas/blob/master/docs/PostmanIntegrationTestStandards.md] naming conventions.
+The output files will follow the [Postman Test Collection Standards|https://github.dxc.com/Platform-DXC/integration-aas/blob/master/docs/PostmanIntegrationTestStandards.md] naming conventions.
 
 **Success Criteria:**
 
- * All [ServiceType] data points necessary to support testing for each supported ServiceNow environment have been obtained
- * Postman Environment files for each supported AWS environment have been created.  NOTE:  These file will have to be checked in with the Integration Test package rather than independently due to the way the packaging works in the integration-ebond repository.
+ * All [ServiceType] data points necessary to support testing for each supported ServiceNow environment have been obtained
+ * Postman Environment files for each supported AWS environment have been created.  NOTE:  These file will have to be checked in with the Integration Test package rather than independently due to the way the packaging works in the integration-ebond repository.
 
 ### Story 2 - Add New User Credentials to SSM in all AWS Environments
 
@@ -789,20 +1125,20 @@ Postman Environment files for each supported AWS environment.
 
 **Description:**
 
-Obtain data specific to the [ServiceType] to utilize in the environment files for the Integration Tests.  The data is environment-specific and will need to be validated against each environment before the testing package can be released into the release-pipeline.  This data should be associated to a test company, not a live customer.
+Obtain data specific to the [ServiceType] to utilize in the environment files for the Integration Tests.  The data is environment-specific and will need to be validated against each environment before the testing package can be released into the release-pipeline.  This data should be associated to a test company, not a live customer.
 
 A single environment file should be created which supports both eBond and Request/Reply for a given [ServiceType] since the data overlaps.
 
 **Naming Convention:**
 
-There currently is no naming convention defined for the specific data points as we are using existing data for a test company.  If the need exists to directly onboard data in support of this task a naming convention should be documented for consistency and repeatability.  Onboarding of test data is included as a pre-requisite for any service type.
+There currently is no naming convention defined for the specific data points as we are using existing data for a test company.  If the need exists to directly onboard data in support of this task a naming convention should be documented for consistency and repeatability.  Onboarding of test data is included as a pre-requisite for any service type.
 
-The output files will follow the [Postman Test Collection Standards|https://github.dxc.com/Platform-DXC/integration-aas/blob/master/docs/PostmanIntegrationTestStandards.md] naming conventions.
+The output files will follow the [Postman Test Collection Standards|https://github.dxc.com/Platform-DXC/integration-aas/blob/master/docs/PostmanIntegrationTestStandards.md] naming conventions.
 
 **Success Criteria:**
 
- * All [ServiceType] data points necessary to support testing for each supported ServiceNow environment have been obtained
- * Postman Environment files for each supported AWS environment have been created.  NOTE:  These file will have to be checked in with the Integration Test package rather than independently due to the way the packaging works in the integration-ebond repository.
+ * All [ServiceType] data points necessary to support testing for each supported ServiceNow environment have been obtained
+ * Postman Environment files for each supported AWS environment have been created.  NOTE:  These file will have to be checked in with the Integration Test package rather than independently due to the way the packaging works in the integration-ebond repository.
 
 ### Story 4 - Create [ServiceType] API Integration Test - Postman Collection
 
@@ -815,7 +1151,7 @@ The output files will follow the [Postman Test Collection Standards|https://gith
 
 **Outputs:**
 
- A Postman collection and associated environment files for the [ServiceType].
+ A Postman collection and associated environment files for the [ServiceType].
 
 **Description:**
 
@@ -824,36 +1160,36 @@ The output files will follow the [Postman Test Collection Standards|https://gith
 
 **Naming Convention:**
 
-Testing files should follow the standards in the [Postman Test Collection Standards|https://github.dxc.com/Platform-DXC/integration-aas/blob/master/docs/PostmanIntegrationTestStandards.md]
+Testing files should follow the standards in the [Postman Test Collection Standards|https://github.dxc.com/Platform-DXC/integration-aas/blob/master/docs/PostmanIntegrationTestStandards.md]
 
 **Success Criteria:**
 
-* The Integration Test collection performs testing of all defined test cases
+* The Integration Test collection performs testing of all defined test cases
 * The Integration Test collection can successfully be run against all supported ServiceNow environments
 
 ### Story 5 - Create SOAP Test for [ServiceType]
 
 **Pre-Requisites:**
- * Service Ramp flows must be available and published to support these requests. 
+ * Service Ramp flows must be available and published to support these requests. 
  * The [ServiceType] API must be published and working in the API Gateway for the selected test environment.
 
 **Outputs:**
 
-A Postman collection which can be used for making a successful SOAP call to the [ServiceType] API using a published ServiceRamp flow. 
+A Postman collection which can be used for making a successful SOAP call to the [ServiceType] API using a published ServiceRamp flow. 
 
 **Description:**
 
-Create a SOAP Test in POSTMAN which can call a flow in ServiceRamp and successfully create a [ServiceType] item in ServiceNow.
+Create a SOAP Test in POSTMAN which can call a flow in ServiceRamp and successfully create a [ServiceType] item in ServiceNow.
 
 Examples and details can be found [here|https://github.dxc.com/Platform-DXC/integration-serviceramp/tree/master/testing/sanityTests].
 
 **Naming Convention:**
 
- Follow the naming standards in the [Postman Test Collection Standards|https://github.dxc.com/Platform-DXC/integration-aas/blob/master/docs/PostmanIntegrationTestStandards.md].
+ Follow the naming standards in the [Postman Test Collection Standards|https://github.dxc.com/Platform-DXC/integration-aas/blob/master/docs/PostmanIntegrationTestStandards.md].
 
 **Success Criteria:**
 
- * A SOAP request can be successfully sent from Postman through the ServiceRamp flow for [ServiceType]
+ * A SOAP request can be successfully sent from Postman through the ServiceRamp flow for [ServiceType]
  * The ServiceNow [ServiceType] item is successfully created and all fields sent in with the request are present in the appropriate fields.
  * The Postman tests used for testing have been merged into Github (integration-serviceramp/testing/sanityTests)
 
@@ -861,7 +1197,7 @@ Examples and details can be found [here|https://github.dxc.com/Platform-DXC/inte
 
 **Pre-requisites:**
 
-* The Postman Integration Test collections for [ServiceType] must be created and validated to be successfully in local testing.
+* The Postman Integration Test collections for [ServiceType] must be created and validated to be successfully in local testing.
 * The environment files for each Supported ServiceNow environment for [ServiceType] must be validated to contain valid data during local testing.
 * The [ServiceType] API must be deployed into the release pipeline (above DEV) before or in parallel with releasing the test package into the release-pipeline.
 
@@ -869,23 +1205,23 @@ Examples and details can be found [here|https://github.dxc.com/Platform-DXC/inte
 
 **Outputs:**
 
- A tests-integration-api-core package in Artifactory which contains the tests for [ServiceType].
+ A tests-integration-api-core package in Artifactory which contains the tests for [ServiceType].
 
 **Description:**
 
-Files for this task are contained in the [integration-ebond|https://github.dxc.com/Platform-DXC/integration-ebond] repository.
+Files for this task are contained in the [integration-ebond|https://github.dxc.com/Platform-DXC/integration-ebond] repository.
 
 The deployment guide for the integration-ebond repository test package can be found [here|https://github.dxc.com/Platform-DXC/integration-ebond/blob/master/docs/DeploymentGuide.md].
 
 **Naming Convention:**
 
- * The Postman test collections have been named according to the [Postman Test Collection Standards|https://github.dxc.com/Platform-DXC/integration-aas/blob/master/docs/PostmanIntegrationTestStandards.md]. 
+ * The Postman test collections have been named according to the [Postman Test Collection Standards|https://github.dxc.com/Platform-DXC/integration-aas/blob/master/docs/PostmanIntegrationTestStandards.md]. 
  * The Artifactory package must be named tests-integration-api-core.
 
 **Success Criteria:**
 
  * The Changelog for tests-integration-api-core has been updated with details of the changes for incorporating [ServiceType] Tests
- * The major version for tests-integration-api-core has been incremented when a NEW collection is added.  If an existing collection is updated only the minor version will increment
+ * The major version for tests-integration-api-core has been incremented when a NEW collection is added.  If an existing collection is updated only the minor version will increment
  * The deploy.sh file has been updated to execute the test collections for [ServiceType]
  * The tests-integration-api-core package containing the [ServiceType] test collections is marked stable in Artifactory
  * The tests-integration-api-core package containing the [ServiceType] test collections has executed without error in all supported AWS instances.
