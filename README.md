@@ -120,25 +120,30 @@ Architecture team has provided the name of the Service Type and a one sentence d
 *Description*
 
 Steps to introduce a new service type in Service Ramp:
+
 	* Insert a row into [SSP_DB].[dbo}.[ServiceType] table with values of new Service Type
 	* Insert a row into [SSP_DB].[dbo].[ServiceOffering] using ID of the new serviceType of step 1)
-	* Change Status to 1 in [SSP_DB].[dbo].[ServiceType] of the new service type row when it is redy to be usable
+	* Change Status to 1 in [SSP_DB].[dbo].[ServiceType] of the new service type row when it is redy to be usable.
+	
 
 Low level instructions:
+
 	* Include in the Post deployment script ReferenceData_ServiceType.sql the new service type
 	* Include in the Post deployment script ReferenceData_ServiceOfferinf.sql the new service offering related to the new service type 
  
 *Success Criteria*
 
 * When a user logs into ServiceRamp, the following are true:
-    **   In the Flow Overview screen, the left pane list of Service Types includes the new Service Type
-    **   In the Flow Summary screen, a new box is displayed with the New ServiceType
-    **   In the Create Flow - Flow Setup screen, a new box is displayed with the new Service Type and the one sentence description provided by Architecture
-    **   A template, flow, flow segment, lookup table, etc. can be created for the new Service Type
+
+		*   In the Flow Overview screen, the left pane list of Service Types includes the new Service Type
+	    	*   In the Flow Summary screen, a new box is displayed with the New ServiceType
+*   In the Create Flow - Flow Setup screen, a new box is displayed with the new Service Type and the one sentence description provided by Architecture.
+*   A template, flow, flow segment, lookup table, etc. can be created for the new Service Type
 
 * The Rapid Deploy package contains post deployment scripts for the ServiceType and ServiceOffering
 
 *Output*
+
 * Post deployment script ReferenceData_ServiceType.sql the new service type
 * Post deployment script ReferenceData_ServiceOfferinf.sql the new service offering related to the new service type
 
