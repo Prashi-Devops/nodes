@@ -221,6 +221,42 @@ Provide in ServiceRamp a schema for the Service Type that matches the swagger de
 
 [Top](#top)
 
+##  <a href="#rinboundservice" id="inboundservice"></a>Inbound Services
+
+Pre Requisites
+
+* Schema
+* Need Engineer permission in Global tenant to create an inbound service in global tenant
+
+Outputs:
+
+* Inbound Services for new service type
+
+Description:
+
+* Create the Inbound Service in SR SB AWS
+* List of test cases
+* Test the Inbound Service
+	* Use it in a flow, publish and send transactions E2E (Use SOAP, Then Rest, PUT and Post methods)
+		
+Naming Convention:
+
+	GenericService+_+[SchemaName]
+	
+	Example:
+		GenericService_LiteChangeV2
+Success Criteria:
+
+* Create the necessary InboundService in ServiceRamp AWS Sandbox
+* Create for SOAP/Rest
+* Request schema needs to match with XSD with the service type
+* Need a sync (match with ICD) and Async (Generic Response) response schema
+* Put and Post service operations.
+* List the InboundService in the SR Rapid deployment Task  
+* Review from a TL
+	
+[Top](#top)
+
 ##  <a href="#maps" id="maps"></a>Maps 
 
 *Requirement*
