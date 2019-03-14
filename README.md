@@ -111,25 +111,24 @@ When a new Service Type is defined, the following are the pre-requisites to crea
 
 *Requirement*
 
-Add the ability to create artifacts in ServiceRamp related to a Service Type that does not yet exist.
+  Add the ability to create artifacts in ServiceRamp related to a Service Type that does not yet exist.
 
 *Pre-Requisites*
 
-Architecture team has provided the name of the Service Type and a one sentence description to be displayed on the Create Flow screen.
+  Architecture team has provided the name of the Service Type and a one sentence description to be displayed on the Create Flow screen.
 
 *Description*
 
 Steps to introduce a new service type in Service Ramp:
-
-	* Insert a row into [SSP_DB].[dbo}.[ServiceType] table with values of new Service Type
-	* Insert a row into [SSP_DB].[dbo].[ServiceOffering] using ID of the new serviceType of step 1)
-	* Change Status to 1 in [SSP_DB].[dbo].[ServiceType] of the new service type row when it is redy to be usable.
-	
+	* Insert a row into [SSP_DB].[dbo}.[ServiceType] table with values of new Service Type.
+	* Insert a row into [SSP_DB].[dbo].[ServiceOffering] using ID of the new serviceType of step .
+	* Change Status to 1 in [SSP_DB].[dbo].[ServiceType] of the new service type row when it is ready to be usable.
+	* Insert rows into [SSP_DB].[dbo].[TemplateDrawingSelector] table with values of new Service Type based on ServiceOfferingId. 
+	* Insert rows into [SSP_DB].[dbo].[TransactionType] table with values of new Service Type based on ServiceOfferingId. 
 
 Low level instructions:
-
-	* Include in the Post deployment script ReferenceData_ServiceType.sql the new service type
-	* Include in the Post deployment script ReferenceData_ServiceOfferinf.sql the new service offering related to the new service type 
+	* Include in the Post deployment script ReferenceData_ServiceType.sql the new service type.
+	* Include in the Post deployment script ReferenceData_ServiceOfferinf.sql the new service offering related to the new service type.
  
 *Success Criteria*
 
