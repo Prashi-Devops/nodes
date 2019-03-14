@@ -120,21 +120,23 @@ When a new Service Type is defined, the following are the pre-requisites to crea
 *Description*
 
 * Steps to introduce a new service type in Service Ramp :
-       	* Insert a row into [SSP_DB].[dbo}.[ServiceType] table with values of new Service Type.
+       	
+	* Insert a row into [SSP_DB].[dbo].[ServiceType] table with values of new Service Type.
         * Insert a row into [SSP_DB].[dbo].[ServiceOffering] using ID of the new serviceType of step .
         * Change Status to 1 in [SSP_DB].[dbo].[ServiceType] of the new service type row when it is ready to be usable.
         * Insert rows into [SSP_DB].[dbo].[TemplateDrawingSelector] table with values of new Service Type based on ServiceOfferingId. 
 	* Insert rows into [SSP_DB].[dbo].[TransactionType] table with values of new Service Type based on ServiceOfferingId. 
+
 * Low level instructions:
 	* Include in the Post deployment script ReferenceData_ServiceType.sql the new service type.
-	* Include in the Post deployment script ReferenceData_ServiceOfferinf.sql the new service offering related to the new service type
+	* Include in the Post deployment script ReferenceData_ServiceOfferinf.sql the new service offering related to the new service type.
  
+ 
 *Success Criteria*
 
 * When a user logs into ServiceRamp, the following are true:
-
-		*   In the Flow Overview screen, the left pane list of Service Types includes the new Service Type
-	    	*   In the Flow Summary screen, a new box is displayed with the New ServiceType
+	*   In the Flow Overview screen, the left pane list of Service Types includes the new Service Type
+	*   In the Flow Summary screen, a new box is displayed with the New ServiceType
 *   In the Create Flow - Flow Setup screen, a new box is displayed with the new Service Type and the one sentence description provided by Architecture.
 *   A template, flow, flow segment, lookup table, etc. can be created for the new Service Type
 
