@@ -126,7 +126,7 @@ The file contents are as described below
 }
 ```
 
-Field definitions:
+[Field definitions](#field_def):
 
 | Field | Contents |
 | --- | --- |
@@ -321,19 +321,11 @@ The file contents are as described below:
 
 [Top](#top)
 
-## <a href="#field__definitions" id="field_definitions"></a>Field Definitions for Test, Rapid and Data Package Release Packages 
+## Field Definitions for Test, Rapid and Data Package Release Packages 
 
-Field definitions:
+Field definitions:[go here](#field_def)
 
-| Field | Contents |
-| --- | --- |
-| release_tag | The tag to apply to the release.  This should be the version number. You can see this tag in the [GitHub repository releases](https://github.dxc.com/Platform-DXC/integration-serviceramp/tags) 'tags' view. |
-| tag_name | Use the same value from release_tag.|
-| name | The title of the release.  You can see this name in the [Github repository releases](https://github.dxc.com/Platform-DXC/integration-serviceramp/releases) 'releases' view. |
-|description| A short description of the release.|
-| prerelease | Indicates if the release is final or not (true/false).  Always set this to true when deploying to Dev. **NOTE**: This value will be updated when releasing to Test in a later step. |
-| release_file| This will be the version number followed by `.zip`.|
-| change_log | Should record the location of the CHANGELOG.md file that should be packaged with the release. No matter what the filename is here, Change Log will always be called CHANGELOG.MD and be at the root of the package delivered to Artifactory.|
+
 
 [Top](#top)
 
