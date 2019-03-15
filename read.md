@@ -126,7 +126,7 @@ The file contents are as described below
 }
 ```
 
-[Field definitions](#field_def):
+<a href="#field_def" id="field_def"> [Field definitions]:
 
 | Field | Contents |
 | --- | --- |
@@ -321,7 +321,7 @@ The file contents are as described below:
 
 [Top](#top)
 
-##  <a href="#field_def" id="field_def">Field Definitions for Test, Rapid and Data Package Release Packages 
+##  Field Definitions for Test, Rapid and Data Package Release Packages 
 
 Field definitions:[go here](#field_def)
 
