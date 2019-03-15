@@ -126,7 +126,7 @@ The file contents are as described below
 }
 ```
 
-<a href="#field_def" id="field_def"> Field definitions:
+<a href="#field_def" id="field_def"></a> Field definitions:
 
 | Field | Contents |
 | --- | --- |
