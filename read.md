@@ -304,6 +304,9 @@ The file contents are as described below:
     "change_log": "track/data-packagerelease/rapid_change_ebond/CHANGELOG.md"
 }
 ```
+Field Definitions:
+
+The detailed description for [field definitions](#field_def)
 
 Update the CHANGELOG.md file in the track/data-packagerelease/rapid_change_ebond folder under the integration-serviceramp/master branch with the latest version.
 
@@ -324,17 +327,11 @@ The file contents are as described below:
 * [FIXED] stored procedure definitions for upsertLookUpTables.  Included with AMI.
 ```
 
+
 >NOTE: As described above, we need to add json and CHANGELOG.md for each data packages under track/data-packagerelease/{package_name}. (package_name example: for Incident it will be like "rapid_incident_ebond")
 
 [Top](#top)
 
-###  Field Definitions for Test, Rapid and Data Package Release Packages 
-
-The detailed description for [field definitions](#field_def)
-
-
-
-[Top](#top)
 
 Create a pull request for the two trigger files and notify the approver to work the request.
 
