@@ -150,7 +150,8 @@ The release file name is the value entered in the `release_file` key-value pair 
 
 The file does not need to have any content.  It only needs to be present.  Place this file into the [integration-serviceramp/track/deploy/](https://github.dxc.com/Platform-DXC/integration-serviceramp/tree/master/track/deploy) folder.
 
-<a href="#pull_req" id="pull_req"></a> Create a PR :
+<a href="#pull_req" id="pull_req"></a><b> To Create a PR </b>:
+
 Create a pull request for the two files and notify the approver to work the request.
 
 The release package creation is fully automated. When the files described in this section are merged into the `master` branch the package will be built automatically based on the contents of this file, then it will be deployed into the DEV environment.
