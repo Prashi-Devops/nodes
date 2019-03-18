@@ -180,7 +180,7 @@ Sample file:
 }
 ```
 
-Field definitions:
+<b>Field definitions</b>:
 
 The detailed description for [field definitions](#field_def).
 
@@ -216,7 +216,7 @@ The release file name is the value entered in the `release_file` key-value pair 
 
 The file does not need to have any content.  It only needs to be present.  Place this file into the [integration-serviceramp/track/testdeploy/](https://github.dxc.com/Platform-DXC/integration-serviceramp/tree/master/track/testdeploy) folder.
 
-Create a PR:
+<b> To Create a PR </b>:
 
 The detailed description for [creating a PR](#pull_req).
 
@@ -242,7 +242,7 @@ The file contents are as described below:
 }
 ```
 
-Field definitions:
+<b>Field definitions</b>:
 
 The detailed description for [field definitions](#field_def).
 
@@ -272,7 +272,7 @@ The release file name is the value entered in the `release_file` key-value pair 
 The file does not need to have any content.  It only needs to be present.  Place this file into the [integration-serviceramp/track/rapiddeploy/](https://github.dxc.com/Platform-DXC/integration-serviceramp/tree/master/track/rapiddeploy) folder.
 
 
-Create a PR:
+<b> To Create a PR </b>:
 
 The detailed description for [creating a PR](#pull_req).
 
@@ -299,7 +299,7 @@ The file contents are as described below:
     "change_log": "track/data-packagerelease/rapid_change_ebond/CHANGELOG.md"
 }
 ```
-Field Definitions:
+<b>Field Definitions</b>:
 
 The detailed description for [field definitions](#field_def)
 
@@ -325,7 +325,7 @@ The file contents are as described below:
 
 >NOTE: As described above, we need to add json and CHANGELOG.md for each data packages under track/data-packagerelease/{package_name}. (package_name example: for Incident it will be like "rapid_incident_ebond")
 
-Create a PR:
+<b> To Create a PR </b>:
 
 The detailed description for [creating a PR](#pull_req).
 
