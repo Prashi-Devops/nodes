@@ -150,6 +150,14 @@ The release file name is the value entered in the `release_file` key-value pair 
 
 The file does not need to have any content.  It only needs to be present.  Place this file into the [integration-serviceramp/track/deploy/](https://github.dxc.com/Platform-DXC/integration-serviceramp/tree/master/track/deploy) folder.
 
+Create a pull request for the two files and notify the approver to work the request.
+
+The release package creation is fully automated. When the files described in this section are merged into the `master` branch the package will be built automatically based on the contents of this file, then it will be deployed into the DEV environment.
+
+Verify in Jenkins that the merge and deploy processed successfully. Verify the package as needed in Artifactory.
+
+Address any errors from the Jenkins run before moving to the next step.
+
 ## <a href="#int-test-release" id="int-test-release"></a>DEPLOY:  Create the Integrated Test Release Package & Deploy to DEV
 
 The Integrated Test package contains automated tests which run in the pipeline.  To create a new package, create a json file in the [integration-serviceramp/track/testrelease](https://github.dxc.com/Platform-DXC/integration-serviceramp/tree/master/track/testrelease) folder in the `master` branch.  The file name convention is \<release_version>.json.
@@ -193,15 +201,7 @@ This package performs Integration testing of the ServiceRamp application.
 
 Field definitions:
 
-| Field | Contents |
-| --- | --- |
-| release_tag | The tag to apply to the release.  This should be the version number. You can see this tag in the [GitHub repository releases](https://github.dxc.com/Platform-DXC/integration-serviceramp/tags) 'tags' view. |
-| tag_name | Use the same value from release_tag.|
-| name | The title of the release.  You can see this name in the [Github repository releases](https://github.dxc.com/Platform-DXC/integration-serviceramp/releases) 'releases' view. |
-|description| A short description of the release.|
-| prerelease | Indicates if the release is final or not (true/false).  Always set this to true when deploying to Dev. **NOTE**: This value will be updated when releasing to Test in a later step.|
-|release_file|The name to use for the file release to Artifactory.  Leave the name as `tests-integration-serviceramp.zip`.|
-| change_log | Should record the location of the CHANGELOG.md file that should be packaged with the release. No matter what the filename is here, Change Log will always be called CHANGELOG.MD and be at the root of the package delivered to Artifactory.|
+The detailed description for [field definitions](#field_def).
 
 Create an md file with the following naming convention: \<environment>\_\<release_version>.md and place it in the [`track/testdeploy`](https://github.dxc.com/Platform-DXC/integration-serviceramp/tree/master/track/testdeploy) folder in the `master` branch.
 
