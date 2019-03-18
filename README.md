@@ -34,6 +34,8 @@ Each process stage should be completed in its entirety before moving to the next
 * [PROMOTE: Get Approval to Mark Stable](#get-approval)
 * [PROMOTE: Mark the ServiceRamp Package Stable](#mark-sr-stable)
 * [PROMOTE: Mark the Integrated Test Package Stable](#mark-int-test-stable)
+* [PROMOTE: Mark the Integrated Rapid Release Package](#review-rapid-pipeline)
+* [PROMOTE: Mark the Integrated Data Package Release Stable](#review-data-package)
 * [PROMOTE: Review TEST Pipeline Execution](#review-test-pipeline)
 * [PROMOTE: Review STAGE Pipeline Execution](#review-stage-pipeline)
 * [PROMOTE: Review PROD Pipeline Execution](#review-prod-pipeline)
@@ -381,6 +383,29 @@ Once the PR is approved and merged into `master`, Verify the results of the merg
 [Top](#top)
 
 ## <a href="#review-test-pipeline" id="review-test-pipeline"></a>PROMOTE: Review TEST Pipeline Execution
+
+As code is promoted into the TEST environment, review the pipeline results in the [release-pipeline master Jenkins](https://jenkins.platformdxc.com/job/Platform%20DXC/job/release-pipeline/job/master/) pipeline runs.  Runs against the TEST region can be identified by looking for 'TEST' under the build numbers. 
+
+Click on the 'Tests' option along the top menu to view test results for the pipeline.
+
+Ensure all test ran successfully.  The test steps/names which display on this screen are the same as the test names in the Integration Test package (e.g. 01-Validate Mock Tags).
+
+[Top](#top)
+
+
+## <a href="#mark-int-rapid-stable" id="mark-int-rapid-stable"></a>PROMOTE: Mark the Integrated Rapid Release Package Stable 
+
+Locate the track/release file made in the [earlier step](#int-test-release) creating the Integrated Test package.
+
+>NOTE:  Ensure the track/release file is the ONLY file in the pull request.
+
+Update the `prerelease` value to `false` and submit a pull request against the integration-serviceramp `master` branch.
+
+Once the PR is approved and merged into `master`, Verify the results of the merge and address any errors as required before moving to the next step.
+
+[Top](#top)
+
+## <a href="#review-data-package" id="review-data-package"></a>PROMOTE: Mark the Integrated Data Package Release Stable
 
 As code is promoted into the TEST environment, review the pipeline results in the [release-pipeline master Jenkins](https://jenkins.platformdxc.com/job/Platform%20DXC/job/release-pipeline/job/master/) pipeline runs.  Runs against the TEST region can be identified by looking for 'TEST' under the build numbers. 
 
