@@ -178,6 +178,10 @@ Sample file:
 }
 ```
 
+Field definitions:
+
+The detailed description for [field definitions](#field_def).
+
 >NOTE:  The release_file name must start with _**tests-**_.
 
 Update the CHANGELOG.md file in the track/testrelease folder under the integration-serviceramp/master branch with the latest release version.
@@ -199,9 +203,7 @@ This package performs Integration testing of the ServiceRamp application.
 * [NON-IMPACTING] - This is not a change in functionality. It only changes the test names logged when tests are viewed in the release-pipeline results. 
 ```
 
-Field definitions:
 
-The detailed description for [field definitions](#field_def).
 
 Create an md file with the following naming convention: \<environment>\_\<release_version>.md and place it in the [`track/testdeploy`](https://github.dxc.com/Platform-DXC/integration-serviceramp/tree/master/track/testdeploy) folder in the `master` branch.
 
@@ -241,6 +243,11 @@ The file contents are as described below:
     "change_log": "track/rapidrelease/CHANGELOG.md"
 }
 ```
+
+Field definitions:
+
+The detailed description for [field definitions](#field_def).
+
 Update the CHANGELOG.md file in the track/rapidrelease folder under the integration-serviceramp/master branch with the latest version.
 
 Example:
