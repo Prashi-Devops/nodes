@@ -384,7 +384,7 @@ Once the PR is approved and merged into `master`, Verify the results of the merg
 
 ## <a href="#mark-int-rapid-stable" id="mark-int-rapid-stable"></a>PROMOTE: Mark the Integrated Rapid Release Package Stable
 
-Locate the track/release file made in the [earlier step](#int-test-release) creating the Integrated Test package.
+Locate the track/release file made in the [earlier step](#int-rapid-release) creating the Integrated Test package.
 
 >NOTE:  Ensure the track/release file is the ONLY file in the pull request.
 
@@ -396,7 +396,7 @@ Once the PR is approved and merged into `master`, Verify the results of the merg
 
 ## <a href="#mark-int-data-stable" id="mark-int-data-stable"></a>PROMOTE: Mark the Integrated Data Package Release Stable
 
-Locate the track/release file made in the [earlier step](#int-test-release) creating the Integrated Test package.
+Locate the track/release file made in the [earlier step](#int-data-packagerelease) creating the Integrated Test package.
 
 >NOTE:  Ensure the track/release file is the ONLY file in the pull request.
 
