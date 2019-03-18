@@ -150,6 +150,7 @@ The release file name is the value entered in the `release_file` key-value pair 
 
 The file does not need to have any content.  It only needs to be present.  Place this file into the [integration-serviceramp/track/deploy/](https://github.dxc.com/Platform-DXC/integration-serviceramp/tree/master/track/deploy) folder.
 
+<a href="#pull_req" id="pull_req"></a> Create a PR :
 Create a pull request for the two files and notify the approver to work the request.
 
 The release package creation is fully automated. When the files described in this section are merged into the `master` branch the package will be built automatically based on the contents of this file, then it will be deployed into the DEV environment.
@@ -214,13 +215,9 @@ The release file name is the value entered in the `release_file` key-value pair 
 
 The file does not need to have any content.  It only needs to be present.  Place this file into the [integration-serviceramp/track/testdeploy/](https://github.dxc.com/Platform-DXC/integration-serviceramp/tree/master/track/testdeploy) folder.
 
-Create a pull request for the two files and notify the approver to work the request.
+Create a PR:
 
-The release package creation is fully automated. When the files described in this section are merged into the `master` branch the package will be built automatically based on the contents of this file, then it will be deployed into the DEV environment.
-
-Verify in Jenkins that the merge and deploy processed successfully. Verify the package as needed in Artifactory.
-
-Address any errors from the Jenkins run before moving to the next step.
+The detailed description for [creating a PR](#pull_req).
 
 [Top](#top)
 
@@ -273,13 +270,10 @@ The release file name is the value entered in the `release_file` key-value pair 
 
 The file does not need to have any content.  It only needs to be present.  Place this file into the [integration-serviceramp/track/rapiddeploy/](https://github.dxc.com/Platform-DXC/integration-serviceramp/tree/master/track/rapiddeploy) folder.
 
-Create a pull request for the two files and notify the approver to work the request.
 
-The release package creation is fully automated. When the files described in this section are merged into the `master` branch the package will be built automatically based on the contents of this file, then it will be deployed into the DEV environment.
+Create a PR:
 
-Verify in Jenkins that the merge and deploy processed successfully. Verify the package as needed in Artifactory.
-
-Address any errors from the Jenkins run before moving to the next step.
+The detailed description for [creating a PR](#pull_req).
 
 [Top](#top)
 
@@ -330,18 +324,9 @@ The file contents are as described below:
 
 >NOTE: As described above, we need to add json and CHANGELOG.md for each data packages under track/data-packagerelease/{package_name}. (package_name example: for Incident it will be like "rapid_incident_ebond")
 
-[Top](#top)
+Create a PR:
 
-
-Create a pull request for the two trigger files and notify the approver to work the request.
-
-Approve then merge the pull request with the trigger files.  This will kick off the auto-deploy activities.
-
-The release package creation is fully automated. When the files described in this section are merged into the `master` branch the package will be built automatically based on the contents of this file, then it will be deployed into the DEV environment.
-
-Verify in Jenkins that the merge and deploy processed successfully. Verify the package as needed in Artifactory.
-
-Address any errors from the Jenkins run before moving to the next step.
+The detailed description for [creating a PR](#pull_req).
 
 >NOTE:  Before deploying to Sandbox is needed to execute the AWS CLI command "put-parameter" to populate the SSM parameters. The command is found in the [integration-serviceramp/init-serviceramp/ssm-para/svr_DEPLOY_CONFIGURATIONS-sandbox.sh](https://github.dxc.com/Platform-DXC/integration-serviceramp/tree/master/init-serviceramp/ssm-para/svr_DEPLOY_CONFIGURATIONS-sandbox.sh) file. 
 
