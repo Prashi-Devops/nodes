@@ -348,7 +348,7 @@ The file contents are as described below:
 
 <b> To Create a PR for package release </b>:
 
-To upload the release package in artifactory.The PR should contain changes in data-package as well as `json file` changes in track/data-packagerelease folder and the `changelog.md file` is optional.
+To upload the release package in artifactory.The PR should contain changes in data-package as well as `json file` changes in track/data-packagerelease folder.
 
 The release package creation is fully automated. When the files described in this section are merged into the master branch the package will be built automatically based on the contents of this file, then it will be deployed into the DEV environment.
 
