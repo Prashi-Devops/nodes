@@ -154,9 +154,8 @@ The file does not need to have any content.  It only needs to be present.  Place
 
 <b> To Create a PR for package release </b>:
 
-Create a pull request for the two files and notify the approver to work the request.
 
-To upload the release package in artifactory.The PR must contain `json file` changes in track/release folder.
+To upload the release package in artifactory.The PR should contain only `json file` changes in track/release folder.
 
 The release package creation is fully automated. When the files described in this section are merged into the `master` branch the package will be built automatically based on the contents of this file, then it will be deployed into the DEV environment.
 
@@ -226,9 +225,8 @@ The file does not need to have any content.  It only needs to be present.  Place
 
 <b> To Create a PR for package release </b>:
 
-Create a pull request for the two files and notify the approver to work the request.
 
-To upload the release package in artifactory.The PR must contain `json file` changes in track/testrelease folder.Here the `changelog.md file` is optional.
+To upload the release package in artifactory.The PR should contain only one `json file` changes in track/testrelease folder.Here the `changelog.md file` is optional.
 
 The release package creation is fully automated. When the files described in this section are merged into the master branch the package will be built automatically based on the contents of this file, then it will be deployed into the DEV environment.
 
@@ -293,7 +291,7 @@ The file does not need to have any content.  It only needs to be present.  Place
 
 Create a pull request for the two files and notify the approver to work the request.
 
-To upload the release package in artifactory.The PR must contain `json file` changes in track/rapidrelease folder.Here the `changelog.md file` is optional.
+To upload the release package in artifactory.The PR should contain only one `json file` changes in track/rapidrelease folder.Here the `changelog.md file` is optional.
 
 The release package creation is fully automated. When the files described in this section are merged into the master branch the package will be built automatically based on the contents of this file, then it will be deployed into the DEV environment.
 
@@ -354,7 +352,7 @@ The file contents are as described below:
 
 Create a pull request for the two files and notify the approver to work the request.
 
-To upload the release package in artifactory.The PR must contain `xml file` changes in data-package and `json file` changes in track/data-packagerelease folder.Here the `changelog.md file` is optional.
+To upload the release package in artifactory.The PR should contain changes in data-package as well as `json file` changes in track/data-packagerelease folder.Here the `changelog.md file` is optional.
 
 The release package creation is fully automated. When the files described in this section are merged into the master branch the package will be built automatically based on the contents of this file, then it will be deployed into the DEV environment.
 
