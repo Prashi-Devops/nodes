@@ -330,10 +330,10 @@ The file contents are as described below:
 
 >NOTE: As described above, we need to add json and CHANGELOG.md for each data packages under track/data-packagerelease/{package_name}. (package_name example: for Incident it will be like "rapid_incident_ebond")
 
-<b> To Create a PR </b>:
+<b> To Create a PR for package release </b>:
 
-The detailed description for [creating a PR](#pull_req).
 
+If the changes made in the data-packages folder and also in the track-data-packagerelease folder then the release package creation is fully automated. When the files described in this section are merged into the master branch the package will be built automatically based on the contents of this file, then it will be deployed into the DEV environment.
 
 [Top](#top)
 
