@@ -332,8 +332,13 @@ The file contents are as described below:
 
 <b> To Create a PR for package release </b>:
 
+Create a pull request for the two files and notify the approver to work the request.
 
-If the changes made in the data-packages folder and also in the track-data-packagerelease folder then the release package creation is fully automated. When the files described in this section are merged into the master branch the package will be built automatically based on the contents of this file, then it will be deployed into the DEV environment.
+If the changes made in the data-packages folder and also in the track-data-packagerelease folder.After that the release package creation is fully automated. When the files described in this section are merged into the master branch the package will be built automatically based on the contents of this file, then it will be deployed into the DEV environment.
+
+Verify in Jenkins that the merge and deploy processed successfully. Verify the package as needed in Artifactory.
+
+Address any errors from the Jenkins run before moving to the next step.
 
 [Top](#top)
 
