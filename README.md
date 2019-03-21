@@ -152,9 +152,11 @@ The release file name is the value entered in the `release_file` key-value pair 
 
 The file does not need to have any content.  It only needs to be present.  Place this file into the [integration-serviceramp/track/deploy/](https://github.dxc.com/Platform-DXC/integration-serviceramp/tree/master/track/deploy) folder.
 
-<a href="#pull_req" id="pull_req"></a><b> To Create a PR </b>:
+<b> To Create a PR for package release </b>:
 
 Create a pull request for the two files and notify the approver to work the request.
+
+To upload the release package in artifactory.The PR must contain `json file` changes in track/release folder.Here the changelog.md file is optional.
 
 The release package creation is fully automated. When the files described in this section are merged into the `master` branch the package will be built automatically based on the contents of this file, then it will be deployed into the DEV environment.
 
@@ -221,9 +223,19 @@ The release file name is the value entered in the `release_file` key-value pair 
 
 The file does not need to have any content.  It only needs to be present.  Place this file into the [integration-serviceramp/track/testdeploy/](https://github.dxc.com/Platform-DXC/integration-serviceramp/tree/master/track/testdeploy) folder.
 
-<b> To Create a PR </b>:
 
-The detailed description for [creating a PR](#pull_req).
+<b> To Create a PR for package release </b>:
+
+Create a pull request for the two files and notify the approver to work the request.
+
+To upload the release package in artifactory.The PR must contain `json file` changes in track/testrelease folder.Here the changelog.md file is optional.
+
+The release package creation is fully automated. When the files described in this section are merged into the master branch the package will be built automatically based on the contents of this file, then it will be deployed into the DEV environment.
+
+Verify in Jenkins that the merge and deploy processed successfully. Verify the package as needed in Artifactory.
+
+Address any errors from the Jenkins run before moving to the next step.
+
 
 [Top](#top)
 
@@ -277,9 +289,17 @@ The release file name is the value entered in the `release_file` key-value pair 
 The file does not need to have any content.  It only needs to be present.  Place this file into the [integration-serviceramp/track/rapiddeploy/](https://github.dxc.com/Platform-DXC/integration-serviceramp/tree/master/track/rapiddeploy) folder.
 
 
-<b> To Create a PR </b>:
+<b> To Create a PR for package release </b>:
 
-The detailed description for [creating a PR](#pull_req).
+Create a pull request for the two files and notify the approver to work the request.
+
+To upload the release package in artifactory.The PR must contain `json file` changes in track/rapidrelease folder.Here the changelog.md file is optional.
+
+The release package creation is fully automated. When the files described in this section are merged into the master branch the package will be built automatically based on the contents of this file, then it will be deployed into the DEV environment.
+
+Verify in Jenkins that the merge and deploy processed successfully. Verify the package as needed in Artifactory.
+
+Address any errors from the Jenkins run before moving to the next step.
 
 [Top](#top)
 
@@ -332,10 +352,9 @@ The file contents are as described below:
 
 <b> To Create a PR for package release </b>:
 
-
 Create a pull request for the two files and notify the approver to work the request.
 
-To upload the release package in artifactory.The PR should contains one change in data-package and one change in track/data-packagerelease.The changelog.md is optional
+To upload the release package in artifactory.The PR must contain `xml file` changes in data-package and `json file` changes in track/data-packagerelease folder.Here the changelog.md file is optional.
 
 The release package creation is fully automated. When the files described in this section are merged into the master branch the package will be built automatically based on the contents of this file, then it will be deployed into the DEV environment.
 
