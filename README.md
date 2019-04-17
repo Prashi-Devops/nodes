@@ -7,6 +7,7 @@ This document provides the steps required to deploy Service Ramp.  This document
 
 ### Import the API:
 Import the Test Delete API through the postman as shown below:
+[Import_API](./importapi.PNG)
 
 ### Deploy the API:
 Deploy the API in Ohio region through the postman as shown below:
