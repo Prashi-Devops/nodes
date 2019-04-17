@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This document provides the steps Test the Delete API.This document is intended to be followed by a person knowledgeable of Delte Api Function.
+This document provides the steps to test the fucntionality of Delete API.This document is intended to be followed by a person knowledgeable of Consumng the Delete API.
 
 
 ### Import the API:
