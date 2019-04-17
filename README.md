@@ -12,19 +12,21 @@ Import the Test Delete API through the postman as shown below:
 
 ### Deploy the API:
 Deploy the API in Ohio region through the postman as shown below:
-
+![IMPORT_API](./importapi.PNG)
 ### Get the API details:
 Verify the API Present in the particular region through the postman as shown below:
-
+![IMPORT_API](./importapi.PNG)
 ### Delete the API:
 
 >NOTE:We are using FLAG as environment variable declared in the lambda fucntion to control the deletion of cloudwatchlogs.
 
 # Case1:If the FLAG value is True
 It deletes usage plan, api key, cloudwatch logs, grant permissions and route key.As shown below:
-
+![IMPORT_API](./importapi.PNG)
 After deletion of the API verify in AWS CONSOLE that deletion of the cloudwatchlogs.
+![IMPORT_API](./importapi.PNG)
 # Case2:If the FLAG value is False
 It deletes usage plan, api key, grant permissions and route key.But not the Cloudwatchlogs as shown below:
-
+![IMPORT_API](./importapi.PNG)
 After deletion of the API verify in AWS CONSOLE that deletion of the cloudwatchlogs.
+![IMPORT_API](./importapi.PNG)
