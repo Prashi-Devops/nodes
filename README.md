@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This document provides the steps required to deploy Service Ramp.  This document is intended to be followed by a person knowledgeable of Delte Api Function.
+This document provides the steps Test the Delete API.This document is intended to be followed by a person knowledgeable of Delte Api Function.
 
 
 ### Import the API:
